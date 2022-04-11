@@ -1,11 +1,11 @@
 #include <isa.h>
 #include "expr.h"
 #include "watchpoint.h"
-
+#include <string.h>
 #include <stdlib.h>
 #include <readline/readline.h>
 #include <readline/history.h>
-
+void isa_reg_display(void);
 void cpu_exec(uint64_t);
 int is_batch_mode();
 
@@ -46,7 +46,13 @@ static int cmd_s(char *args){
 }
 
 static int cmd_info_r(char *args){
- return 0; 
+const char *temp=args;	
+ if(strcmp(temp,"r")==1||strcmp(temp,"w")==1){
+   isa_reg_display();
+   return 0;
+ }else{
+   return -1;
+ }
 }
 
 static struct {
