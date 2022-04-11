@@ -20,7 +20,7 @@ static void restart() {
 
 void init_isa() {
   /* Test the implementation of the `CPU_state' structure. */
-  void reg_test();
+  void ressssss_test();
  // reg_test();
 
   /* Load built-in image. */
