@@ -40,7 +40,7 @@ static int cmd_q(char *args) {
 static int cmd_help(char *args);
 static int cmd_s(char *args){
   cpu_exec(strtol(args,NULL,10));
-  printf("%ld\n",strtol(args,NULL,10));
+  //printf("%ld\n",strtol(args,NULL,10));
   return 0;
 }
 static struct {
