@@ -46,19 +46,19 @@ static int cmd_s(char *args){
 }
 
 static int cmd_info(char *args){
-const char *temp=args;
-if(temp!=NULL){
-printf("%s\n",temp);}
-/* if(strcmp(temp,"r")==1||strcmp(temp,"w")==1){
-   //printf("%s",temp);
-   isa_reg_display();
-   return 0;
- }else{
-   //printf("%s",args);
-   //printf("%s",temp);
-   return -1;
- }*/
-return 0;
+  const char *temp=args;
+  if(temp!=NULL){
+    if(strcmp(temp,"r")==1||strcmp(temp,"w")==1){
+      printf("%s\n",temp);
+      isa_reg_display();
+      return 0;
+    }else{
+      printf("invalid argument");
+      return -1;
+    }
+  }
+  printf("invalid argument");
+  return -1;
 }
 
 static struct {
