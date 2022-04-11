@@ -38,11 +38,17 @@ static int cmd_q(char *args) {
 }
 
 static int cmd_help(char *args);
+
 static int cmd_s(char *args){
   cpu_exec(strtol(args,NULL,10));
   //printf("%ld\n",strtol(args,NULL,10));
   return 0;
 }
+
+static int cmd_info_r(char *args){
+ return 0; 
+}
+
 static struct {
   char *name;
   char *description;
@@ -52,7 +58,7 @@ static struct {
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
   {"si", "Signal step execute,add [N] for n steps", cmd_s },
-
+  {"info","\"info r\" for display regs state,\"info w\" for display watch_points", cmd_info_r },
   /* TODO: Add more commands */
 
 };
