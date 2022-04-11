@@ -52,7 +52,7 @@ const char *temp=args;
    isa_reg_display();
    return 0;
  }else{
-   printf("%s",args);
+   //printf("%s",args);
    //printf("%s",temp);
    return -1;
  }
