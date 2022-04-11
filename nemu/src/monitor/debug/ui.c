@@ -47,8 +47,8 @@ static int cmd_s(char *args){
 
 static int cmd_info(char *args){
 const char *temp=args;	
-printf("%s\n",args);
- if(strcmp(temp,"r")==1||strcmp(temp,"w")==1){
+printf("%s\n",temp);
+/* if(strcmp(temp,"r")==1||strcmp(temp,"w")==1){
    //printf("%s",temp);
    isa_reg_display();
    return 0;
@@ -56,7 +56,8 @@ printf("%s\n",args);
    //printf("%s",args);
    //printf("%s",temp);
    return -1;
- }
+ }*/
+return 0;
 }
 
 static struct {
