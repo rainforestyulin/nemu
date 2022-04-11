@@ -48,6 +48,7 @@ static int cmd_s(char *args){
 static int cmd_info_r(char *args){
 const char *temp=args;	
  if(strcmp(temp,"r")==1||strcmp(temp,"w")==1){
+   printf("%s",temp);
    isa_reg_display();
    return 0;
  }else{
