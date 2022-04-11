@@ -45,13 +45,14 @@ static int cmd_s(char *args){
   return 0;
 }
 
-static int cmd_info_r(char *args){
+static int cmd_info(char *args){
 const char *temp=args;	
  if(strcmp(temp,"r")==1||strcmp(temp,"w")==1){
    printf("%s",temp);
    isa_reg_display();
    return 0;
  }else{
+   printf("%s",args);
    printf("%s",temp);
    return -1;
  }
@@ -66,7 +67,7 @@ static struct {
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
   {"si", "Signal step execute,add [N] for n steps", cmd_s },
-  {"info","\"info r\" for display regs state,\"info w\" for display watch_points", cmd_info_r },
+  {"info","\"info r\" for display regs state,\"info w\" for display watch_points", cmd_info },
   /* TODO: Add more commands */
 
 };
