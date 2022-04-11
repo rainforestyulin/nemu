@@ -39,10 +39,10 @@ void reg_test() {
   assert(sample[R_ESP] == cpu.esp);
   assert(sample[R_EBP] == cpu.ebp);
   assert(sample[R_ESI] == cpu.esi);
-  assert(sample[R_EDI] == cpu.edi);
+  assert(sample[R_EDI] == cpu.edi);*/
 
   assert(pc_sample == cpu.pc);
-  */
+  
 }
 
 void isa_reg_display() {
