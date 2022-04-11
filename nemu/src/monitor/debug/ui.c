@@ -49,7 +49,7 @@ static struct {
   { "help", "Display informations about all supported commands", cmd_help },
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
-  {"si [N]", "Signal step execute", cmd_s },
+  {"si", "Signal step execute,add [N] for n steps", cmd_s },
 
   /* TODO: Add more commands */
 
