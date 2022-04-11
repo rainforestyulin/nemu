@@ -39,7 +39,8 @@ static int cmd_q(char *args) {
 
 static int cmd_help(char *args);
 static int cmd_s(char *args){
-  return -2;
+  cpu_exec(*(args+0));
+  return 0;
 }
 static struct {
   char *name;
