@@ -47,10 +47,10 @@ void reg_test() {
 }
 
 void isa_reg_display() {
- printf("EAX-----%x\n",cpu.eax);
- printf("ECX-----%x\n",cpu.ecx);
- printf("EDX-----%x\n",cpu.edx);
- printf("EBX-----%x\n",cpu.ebx);
+ printf("EAX-----%x\n",cpu.gpr[0]._32);
+ printf("ECX-----%x\n",cpu.gpr[1]._32);
+ printf("EDX-----%x\n",cpu.gpr[2]._32);
+ printf("EBX-----%x\n",cpu.gpr[3]._32);
  printf("ESP-----%x\n",cpu.esp);
  printf("EBP-----%x\n",cpu.ebp);
  printf("ESI-----%x\n",cpu.esi);
