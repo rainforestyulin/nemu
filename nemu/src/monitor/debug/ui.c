@@ -8,6 +8,7 @@
 void isa_reg_display(void);
 void cpu_exec(uint64_t);
 int is_batch_mode();
+word_t vaddr_read1(vaddr_t addr);
 
 /* We use the `readline' library to provide more flexibility to read from stdin. */
 static char* rl_gets() {
@@ -64,8 +65,10 @@ static int cmd_m_p(char *args){
   int r[2];
   r[0]=strtol(args,NULL,10);
   r[1]=strtol(args+2,NULL,16);
- // for (int i=0;i<)
-  printf("%s____%d____%d",args,r[0],r[1]);
+  for (int i=0;i<r[0];i++){
+  	printf("0x%x------0x%x\n",r[1]+i,vaddr_read1(r[1]+i));
+  }
+  printf("%s____%d____%x",args,r[0],r[1]);
   return 0;
 }
 
