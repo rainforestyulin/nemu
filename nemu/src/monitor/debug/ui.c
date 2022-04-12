@@ -63,7 +63,7 @@ static int cmd_info(char *args){
 static int cmd_m_p(char *args){
   int r[2];
   r[0]=strtol(args,NULL,10);
-  r[2]=strtol(args+1,NULL,10);
+  r[2]=strtol(args+1,NULL,16);
  // for (int i=0;i<)
   printf("%s____%d____%x",args,r[0],r[1]);
   return 0;
