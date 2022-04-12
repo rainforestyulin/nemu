@@ -75,7 +75,7 @@ static struct {
   { "q", "Exit NEMU", cmd_q },
   {"si", "Signal step execute,add [N] for n steps", cmd_s },
   {"info","\"info r\" for display regs state,\"info w\" for display watch_points", cmd_info },
-  {"x","\"x N expr\" for print N memo from addr expr",cmd_m_p},
+  {"x_N","\"x N expr\" for print N memo from addr expr",cmd_m_p},
   /* TODO: Add more commands */
 
 };
