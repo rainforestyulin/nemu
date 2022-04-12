@@ -18,7 +18,7 @@
  */
 
 typedef struct {
-  union {
+  
     union{
       uint32_t _32;
       uint16_t _16;
@@ -33,7 +33,7 @@ typedef struct {
    union{
      rtlreg_t eax, ecx, edx, ebx, esp, ebp, esi, edi;
    };
-  };
+  
   vaddr_t pc;
 } x86_CPU_state;
 
