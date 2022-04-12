@@ -51,10 +51,10 @@ void isa_reg_display() {
  printf("ECX-----%x\n",cpu.gpr[1]._32);
  printf("EDX-----%x\n",cpu.gpr[2]._32);
  printf("EBX-----%x\n",cpu.gpr[3]._32);
- printf("ESP-----%x\n",cpu.esp);
- printf("EBP-----%x\n",cpu.ebp);
- printf("ESI-----%x\n",cpu.esi);
- printf("EDI-----%x\n",cpu.edi);
+ printf("ESP-----%x\n",cpu.gpr[4]._32);
+ printf("EBP-----%x\n",cpu.gpr[5]._32);
+ printf("ESI-----%x\n",cpu.gpr[6]._32);
+ printf("EDI-----%x\n",cpu.gpr[7]._32);
 }
 
 word_t isa_reg_str2val(const char *s, bool *success) {
