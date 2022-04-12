@@ -60,8 +60,8 @@ include Makefile.git
 .DEFAULT_GOAL = app
 
 # Compilation flags
-CC = gcc -g
-LD = gcc -g
+CC = gcc 
+LD = gcc 
 INCLUDES  = $(addprefix -I, $(INC_DIR))
 CFLAGS   += -O2 -MMD -Wall -Werror -ggdb3 $(INCLUDES) \
             -D__ENGINE_$(ENGINE)__ \

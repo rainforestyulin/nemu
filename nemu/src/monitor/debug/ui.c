@@ -60,6 +60,10 @@ static int cmd_info(char *args){
   printf("invalid argument");
   return -1;
 }
+static int cmd_m_p(char *args){
+  printf("%s",args);
+  return 0;
+}
 
 static struct {
   char *name;
@@ -71,6 +75,7 @@ static struct {
   { "q", "Exit NEMU", cmd_q },
   {"si", "Signal step execute,add [N] for n steps", cmd_s },
   {"info","\"info r\" for display regs state,\"info w\" for display watch_points", cmd_info },
+  {"x N expr","Print N memo from addr expr",cmd_m_p},
   /* TODO: Add more commands */
 
 };
