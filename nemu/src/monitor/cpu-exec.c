@@ -86,7 +86,7 @@ void cpu_exec(uint64_t n) {
     g_nr_guest_instr ++;
 
 #ifdef DEBUG
-    asm_print(this_pc, seq_pc - this_pc, n < MAX_INSTR_TO_PRINT);
+    //asm_print(this_pc, seq_pc - this_pc, n < MAX_INSTR_TO_PRINT);
 
     /* TODO: check watchpoints here. */
 #endif
