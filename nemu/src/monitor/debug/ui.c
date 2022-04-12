@@ -68,7 +68,7 @@ static int cmd_m_p(char *args){
   for (int i=0;i<r[0];i++){
   	printf("0x%x------0x%x\n",r[1]+i,vaddr_read1(r[1]+i));
   }
-  printf("%s____%d____%x",args,r[0],r[1]);
+ // printf("%s____%d____%x",args,r[0],r[1]);
   return 0;
 }
 
