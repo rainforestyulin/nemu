@@ -86,10 +86,14 @@ static bool make_token(char *e) {
 
         switch (rules[i].token_type) {
 		case TK_NUM:
-			tokens[nr_token++].type=rules[i].token_type;
+			tokens[nr_token].type=rules[i].token_type;
 	      		for(int j=0;j<substr_len-1;j++){
-	          	tokens[nr_token++].str[j]=*(substr_start+j);
-	       };
+	          		tokens[nr_token].str[j]=*(substr_start+j);
+	       		};
+			nr_token++;
+		case TK_RPAR:
+			tokens[nr_token].type=rules[i].token_type;
+			tokens[nr_token].str[0]=*(substr_start);
           default: TODO();
         }
 
