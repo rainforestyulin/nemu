@@ -66,7 +66,7 @@ static int cmd_m_p(char *args){
   r[0]=strtol(args,NULL,10);
   r[1]=strtol(args+2,NULL,16);
   for (int i=0;i<r[0];i++){
-  	printf("0x%x------0x%x\n",r[1]+i,vaddr_read1(r[1]+i));
+  	printf("0x%x\t0x%x\t\n",r[1]+i,vaddr_read1(r[1]+i));
   }
  // printf("%s____%d____%x",args,r[0],r[1]);
   return 0;
@@ -82,7 +82,7 @@ static struct {
   { "q", "Exit NEMU", cmd_q },
   {"si", "Signal step execute,add [N] for n steps", cmd_s },
   {"info","\"info r\" for display regs state,\"info w\" for display watch_points", cmd_info },
-  {"x%d","\"x N expr\" for print N memo from addr expr",cmd_m_p},
+  {"x","\"x N expr\" for print N memo from addr expr",cmd_m_p},
   /* TODO: Add more commands */
 
 };
