@@ -49,7 +49,7 @@ void reg_test() {
 void isa_reg_display() {
   int i;
   for (i = R_EAX; i <= R_EDI; i ++) {
-    printf("%s\t  0x%x\t  %d\t\n",regsl[i],cpu.gpr[i]._32,cpu.gpr[i]._32);
+    printf("%s\t0x\t%x\t%d\t\n",regsl[i],cpu.gpr[i]._32,cpu.gpr[i]._32);
   }
 
  /*printf("eax%x\n",cpu.eax);
