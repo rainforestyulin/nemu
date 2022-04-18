@@ -94,6 +94,11 @@ static bool make_token(char *e) {
 		case TK_RPAR:
 			tokens[nr_token].type=rules[i].token_type;
 			tokens[nr_token].str[0]=*(substr_start);
+		case TK_LPAR:
+                        tokens[nr_token].type=rules[i].token_type;
+                        tokens[nr_token].str[0]=*(substr_start);
+		case TK_NOTYPE:
+                        printf("sdhkjahsdjahdsjjahsd\n");
           default: TODO();
         }
 
