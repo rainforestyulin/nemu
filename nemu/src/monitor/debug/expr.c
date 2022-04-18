@@ -20,9 +20,9 @@ static struct rule {
   /* TODO: Add more rules.
    * Pay attention to the precedence level of different rules.
    */
-  {"[0-9]*",TK_NUM},
-  {"\(",TK_LPAR},
- // {"\)",TK_RPAR},
+  {"[0-9]+",TK_NUM},
+  {"\\(",TK_LPAR},
+  {"\\)",TK_RPAR},
   {" +", TK_NOTYPE},    // spaces
   {"\\+", '+'},         // plus
   {"==", TK_EQ},        // equal
