@@ -47,14 +47,19 @@ void reg_test() {
 }
 
 void isa_reg_display() {
- printf("EAX-----%x\n",cpu.eax);
+  int i;
+  for (i = R_EAX; i <= R_EDI; i ++) {
+    printf("%s\t0x%x\t%d\n",regsl[i],cpu.gpr[i]._32,cpu.gpr[i]._32);
+  }
+
+ /*printf("eax%x\n",cpu.eax);
  printf("ECX-----%x\n",cpu.ecx);
  printf("EDX-----%x\n",cpu.edx);
  printf("EBX-----%x\n",cpu.ebx);
  printf("ESP-----%x\n",cpu.esp);
  printf("EBP-----%x\n",cpu.ebp);
  printf("ESI-----%x\n",cpu.esi);
- printf("EDI-----%x\n",cpu.edi);
+ printf("EDI-----%x\n",cpu.edi);*/
 /* printf("-----------------------------\n");
  printf("EAX-----%x\n",cpu.gpr[0]._32);
  printf("ECX-----%x\n",cpu.gpr[1]._32);
