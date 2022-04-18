@@ -25,6 +25,9 @@ static struct rule {
   {"\\)",TK_RPAR},
   {" +", TK_NOTYPE},    // spaces
   {"\\+", '+'},         // plus
+  {"\\-",'-'},		// sub	
+  {"\\*",'*'},		// mul
+  {"\\/",'/'},		// div
   {"==", TK_EQ},        // equal
 };
 
