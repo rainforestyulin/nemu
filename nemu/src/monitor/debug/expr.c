@@ -89,7 +89,7 @@ static bool make_token(char *e) {
 			tokens[nr_token].type=rules[i].token_type;
 	      		for(int j=0;j<substr_len-1;j++){
 	          		tokens[nr_token].str[j]=*(substr_start+j);
-				printf("%d",*(substr_start+j));
+				printf("%c",*(substr_start+j));
 	       		};
 			printf("token_num_added\n");
 			nr_token++;
@@ -107,7 +107,7 @@ static bool make_token(char *e) {
 			nr_token++;
 			break;
 		case TK_NOTYPE:
-                        printf("sdhkjahsdjahdsjjahsd\n");
+                        printf(" added\n");
 			break;
 		case '+':
 			tokens[nr_token].type=rules[i].token_type;
