@@ -133,7 +133,7 @@ static bool make_token(char *e) {
                         break;
 		case TK_R_EAX:
 			tokens[nr_token].type=rules[i].token_type;
-                        for(int j=0;j<substr_len;j++){
+                        for(int j=0;j<substr_len-1;j++){
                                 tokens[nr_token].str[j]=*(substr_start+j+1);
 				printf("%c",*(substr_start+j+1));
                         };
@@ -142,7 +142,7 @@ static bool make_token(char *e) {
 			break;
 		case TK_R_ECX:
 			tokens[nr_token].type=rules[i].token_type;
-                        for(int j=0;j<substr_len;j++){
+                        for(int j=0;j<substr_len-1;j++){
                                 tokens[nr_token].str[j]=*(substr_start+j+1);
                                 printf("%c",*(substr_start+j+1));
                         };
