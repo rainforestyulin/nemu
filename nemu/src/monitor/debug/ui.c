@@ -1,6 +1,5 @@
 #include <isa.h>
 #include "expr.h"
-#include "expr.c"
 #include "watchpoint.h"
 #include <string.h>
 #include <stdlib.h>
