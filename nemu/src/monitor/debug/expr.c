@@ -109,6 +109,31 @@ static bool make_token(char *e) {
 		case TK_NOTYPE:
                         printf("sdhkjahsdjahdsjjahsd\n");
 			break;
+		case '+':
+			tokens[nr_token].type=rules[i].token_type;
+                        tokens[nr_token].str[0]=*(substr_start);
+                        printf("+_added\n");
+                        nr_token++;
+                        break;
+		case '-':
+			tokens[nr_token].type=rules[i].token_type;
+                        tokens[nr_token].str[0]=*(substr_start);
+                        printf("-_added\n");
+                        nr_token++;
+                        break;
+		case '*':
+			tokens[nr_token].type=rules[i].token_type;
+                        tokens[nr_token].str[0]=*(substr_start);
+                        printf("*_added\n");
+                        nr_token++;
+                        break;
+		case '/':
+			tokens[nr_token].type=rules[i].token_type;
+                        tokens[nr_token].str[0]=*(substr_start);
+                        printf("/_added\n");
+                        nr_token++;
+                        break;
+
           default: TODO();break;
         }
 
