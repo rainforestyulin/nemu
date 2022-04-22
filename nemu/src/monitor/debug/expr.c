@@ -121,6 +121,10 @@ static bool make_token(char *e) {
   return true;
 }
 
+bool make_tokens(char *c){
+	return make_token(c);
+}
+
 
 word_t expr(char *e, bool *success) {
   if (!make_token(e)) {

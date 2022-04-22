@@ -9,7 +9,7 @@ void isa_reg_display(void);
 void cpu_exec(uint64_t);
 int is_batch_mode();
 word_t vaddr_read1(vaddr_t addr);
-bool make_token(char *e);
+bool make_tokens(char *c);
 /* We use the `readline' library to provide more flexibility to read from stdin. */
 static char* rl_gets() {
   static char *line_read = NULL;
@@ -73,7 +73,7 @@ static int cmd_m_p(char *args){
 }
 
 static int cmd_e_p(char *args){
-  make_token(args);
+  make_tokens(args);
   return 0;
 }
 
