@@ -131,6 +131,22 @@ static bool make_token(char *e) {
                         tokens[nr_token].str[0]=*(substr_start);
                         nr_token++;
                         break;
+		case TK_R_EAX:
+			break;
+		case TK_R_ECX:
+                        break;
+		case TK_R_EDX:
+                        break;
+		case TK_R_EBX:
+                        break;
+		case TK_R_ESP:
+                        break;
+		case TK_R_EBP:
+                        break;
+		case TK_R_ESI:
+                        break;
+		case TK_R_EDI:
+                        break;
 
                default: 
 			printf("illegal EXPR\n");
