@@ -72,6 +72,11 @@ static int cmd_m_p(char *args){
   return 0;
 }
 
+static int cmd_e_p(char *args){
+  printf("%s\n",args);
+  return 0;
+}
+
 static struct {
   char *name;
   char *description;
@@ -83,6 +88,7 @@ static struct {
   {"si", "Signal step execute,add [N] for n steps", cmd_s },
   {"info","\"info r\" for display regs state,\"info w\" for display watch_points", cmd_info },
   {"x","\"x N expr\" for print N memo from addr expr",cmd_m_p},
+  {"p","\"x EXPR \" for caculate the result of the EXPR",cmd_e_p},
   /* TODO: Add more commands */
 
 };
