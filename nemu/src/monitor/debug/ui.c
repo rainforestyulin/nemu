@@ -73,7 +73,7 @@ static int cmd_m_p(char *args){
 }
 
 static int cmd_e_p(char *args){
-  printf("%s\n",args);
+  assert(make_token(args));
   return 0;
 }
 
