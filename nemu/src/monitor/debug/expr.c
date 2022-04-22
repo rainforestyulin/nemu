@@ -89,14 +89,20 @@ static bool make_token(char *e) {
 			tokens[nr_token].type=rules[i].token_type;
 	      		for(int j=0;j<substr_len-1;j++){
 	          		tokens[nr_token].str[j]=*(substr_start+j);
+				printf("%d",*(substr_start+j));
 	       		};
+			printf("token_num_added\n");
 			nr_token++;
 		case TK_RPAR:
 			tokens[nr_token].type=rules[i].token_type;
 			tokens[nr_token].str[0]=*(substr_start);
+			printf(")_added\n");
+			nr_token++;
 		case TK_LPAR:
                         tokens[nr_token].type=rules[i].token_type;
                         tokens[nr_token].str[0]=*(substr_start);
+			printf("(_added\n");
+			nr_token++;
 		case TK_NOTYPE:
                         printf("sdhkjahsdjahdsjjahsd\n");
           default: TODO();
