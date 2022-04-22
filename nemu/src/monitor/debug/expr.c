@@ -6,7 +6,7 @@
 #include <regex.h>
 
 enum {
-  TK_NOTYPE = 256, TK_EQ, TK_LPAR, TK_RPAR, TK_NUM
+  TK_NOTYPE = 256, TK_EQ, TK_LPAR, TK_RPAR, TK_NUM, TK_R_EAX, TK_R_ECX, TK_R_EDX, TK_R_EBX, TK_R_ESP, TK_R_EBP, TK_R_ESI, TK_R_EDI
 
   /* TODO: Add more token types */
 
@@ -29,6 +29,14 @@ static struct rule {
   {"\\*",'*'},		// mul
   {"\\/",'/'},		// div
   {"==", TK_EQ},        // equal
+  {"\%eax",TK_R_EAX},
+  {"\%ecx",TK_R_ECX},
+  {"\%edx",TK_R_EDX},
+  {"\%ebx",TK_R_EBX},
+  {"\%esp",TK_R_ESP},
+  {"\%ebp",TK_R_EBP},
+  {"\%esi",TK_R_ESI},
+  {"\%edi",TK_R_EDI},
 };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
