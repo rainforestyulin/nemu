@@ -74,7 +74,7 @@ static int cmd_m_p(char *args){
 
 static int cmd_e_p(char *args){
  if(make_tokens(args)){
- 	TODO();
+ 	
  }
   return 0;
 }
