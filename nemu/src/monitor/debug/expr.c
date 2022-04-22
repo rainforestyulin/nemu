@@ -89,52 +89,45 @@ static bool make_token(char *e) {
 			tokens[nr_token].type=rules[i].token_type;
 	      		for(int j=0;j<substr_len;j++){
 	          		tokens[nr_token].str[j]=*(substr_start+j);
-				printf("%c",*(substr_start+j));
 	       		};
-			printf("token_num_added\n");
 			nr_token++;
 			break;
 		case TK_RPAR:
 			tokens[nr_token].type=rules[i].token_type;
 			tokens[nr_token].str[0]=*(substr_start);
-			printf(")_added\n");
 			nr_token++;
 			break;
 		case TK_LPAR:
                         tokens[nr_token].type=rules[i].token_type;
                         tokens[nr_token].str[0]=*(substr_start);
-			printf("(_added\n");
 			nr_token++;
 			break;
 		case TK_NOTYPE:
-                        printf(" added\n");
 			break;
 		case '+':
 			tokens[nr_token].type=rules[i].token_type;
                         tokens[nr_token].str[0]=*(substr_start);
-                        printf("+_added\n");
                         nr_token++;
                         break;
 		case '-':
 			tokens[nr_token].type=rules[i].token_type;
                         tokens[nr_token].str[0]=*(substr_start);
-                        printf("-_added\n");
                         nr_token++;
                         break;
 		case '*':
 			tokens[nr_token].type=rules[i].token_type;
                         tokens[nr_token].str[0]=*(substr_start);
-                        printf("*_added\n");
                         nr_token++;
                         break;
 		case '/':
 			tokens[nr_token].type=rules[i].token_type;
                         tokens[nr_token].str[0]=*(substr_start);
-                        printf("/_added\n");
                         nr_token++;
                         break;
 
-          default: TODO();break;
+               default: 
+			printf("illegal EXPR\n");
+		        break;
         }
 
         break;
