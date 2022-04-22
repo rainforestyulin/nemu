@@ -87,7 +87,7 @@ static bool make_token(char *e) {
         switch (rules[i].token_type) {
 		case TK_NUM:
 			tokens[nr_token].type=rules[i].token_type;
-	      		for(int j=0;j<substr_len-1;j++){
+	      		for(int j=0;j<substr_len;j++){
 	          		tokens[nr_token].str[j]=*(substr_start+j);
 				printf("%c",*(substr_start+j));
 	       		};
