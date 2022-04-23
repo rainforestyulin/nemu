@@ -188,10 +188,20 @@ bool check_parentheses(int p,int  q){
 long int get_num_val(int p){
 	if(tokens[p].type==TK_NUM){
 		int i=0;
+		long int val=0;
 		while(tokens[p].str[i]!='\0'){
 		 i++;
 		}
-		printf("depth %d\n",i);
+		for(int j=0;j<i;j++){
+			int temp=1;
+			for(int jj=i-j-1;jj>0;jj--){
+			temp=temp*10;
+			}
+			val=val+(tokens[p].str[j]-48)*temp;
+
+		}
+		printf("val_%ld\n",val);
+		
 	}
 	return 0;
 }
