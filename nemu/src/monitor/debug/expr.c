@@ -204,7 +204,6 @@ long int get_num_val(int p){
 		printf("%ld\t %lx\n",val,val);
 		return val;		
 	}else if(tokens[p].type==TK_R){
-		printf("dadadada\n");
 		long int val=0;
 		bool issuccess=false;
 		val=isa_reg_str2val(tokens[p].str,&issuccess);
