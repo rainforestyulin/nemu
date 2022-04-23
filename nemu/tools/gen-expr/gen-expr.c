@@ -118,6 +118,7 @@ int main(int argc, char *argv[]) {
     pclose(fp);
 
     printf("%d---- %s\n", result, buf);
+    //buf[0] = '\0';
   }
   for(int i=0;i<buf_nr;i++){
         printf("%c",buf[i]);

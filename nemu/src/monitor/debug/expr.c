@@ -210,13 +210,44 @@ bool make_tokens(char *c){
 	return make_token(c);
 }
 
+bool check_parentheses(int p,int  q){
+	if(tokens[p].type==TK_LPAR&&tokens[q].type==TK_RPAR){
+	return true;
+	}
+	return false;
+}
+
+word_t eval(int p,int q){
+if (p > q) {
+    /* Bad expression */
+  }
+  else if (p == q) {
+    /* Single token.
+     * For now this token should be a number.
+     * Return the value of the number.
+     */
+	  if(tokens[p].type==TK_NUM){
+	  
+	  }
+  }
+  else if (check_parentheses(p, q) == true) {
+    /* The expression is surrounded by a matched pair of parentheses.
+     * If that is the case, just throw away the parentheses.
+     */
+    return eval(p + 1, q - 1);
+  }
+  else {
+    /* We should do more things here. */
+  }
+  return 0;
+}
 
 word_t expr(char *e, bool *success) {
   if (!make_token(e)) {
     *success = false;
     return 0;
   }
-
+  
   /* TODO: Insert codes to evaluate the expression. */
   TODO();
 
