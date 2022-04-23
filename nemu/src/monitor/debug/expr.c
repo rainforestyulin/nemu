@@ -224,8 +224,7 @@ if (p > q) {
      * For now this token should be a number.
      * Return the value of the number.
      */
-	  
-	   get_num_val(p);
+      get_num_val(p);
       return 0;	
 	  
   }
