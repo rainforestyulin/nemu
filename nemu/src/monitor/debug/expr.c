@@ -199,7 +199,8 @@ if (p > q) {
      * Return the value of the number.
      */
 	  if(tokens[p].type==TK_NUM){
-	  
+	printf("size of word_t %ld\n",sizeof(word_t));
+      return 0;	
 	  }
   }
   else if (check_parentheses(p, q) == true) {
@@ -219,6 +220,7 @@ word_t expr(char *e, bool *success) {
     *success = false;
     return 0;
   }
+  eval(1,1);
   
   /* TODO: Insert codes to evaluate the expression. */
   TODO();
