@@ -6,7 +6,7 @@
 #include <regex.h>
 
 enum {
-  TK_NOTYPE = 256, TK_EQ, TK_LPAR, TK_RPAR, TK_NUM, TK_R_EAX, TK_R_ECX, TK_R_EDX, TK_R_EBX, TK_R_ESP, TK_R_EBP, TK_R_ESI, TK_R_EDI
+  TK_NOTYPE = 256, TK_EQ, TK_LPAR, TK_RPAR, TK_NUM, TK_R
 
   /* TODO: Add more token types */
 
@@ -29,14 +29,14 @@ static struct rule {
   {"\\*",'*'},		// mul
   {"\\/",'/'},		// div
   {"==", TK_EQ},        // equal
-  {"\%eax",TK_R_EAX},
-  {"\%ecx",TK_R_ECX},
-  {"\%edx",TK_R_EDX},
-  {"\%ebx",TK_R_EBX},
-  {"\%esp",TK_R_ESP},
-  {"\%ebp",TK_R_EBP},
-  {"\%esi",TK_R_ESI},
-  {"\%edi",TK_R_EDI},
+  {"\%eax",TK_R},
+  {"\%ecx",TK_R},
+  {"\%edx",TK_R},
+  {"\%ebx",TK_R},
+  {"\%esp",TK_R},
+  {"\%ebp",TK_R},
+  {"\%esi",TK_R},
+  {"\%edi",TK_R},
 };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
@@ -131,13 +131,14 @@ static bool make_token(char *e) {
                         tokens[nr_token].str[0]=*(substr_start);
                         nr_token++;
                         break;
-		case TK_R_EAX:
+		case TK_R:
 			tokens[nr_token].type=rules[i].token_type;
                         for(int j=0;j<substr_len-1;j++){
                                 tokens[nr_token].str[j]=*(substr_start+j+1);
                         };
                         nr_token++;
 			break;
+			/*
 		case TK_R_ECX:
 			tokens[nr_token].type=rules[i].token_type;
                         for(int j=0;j<substr_len-1;j++){
@@ -157,36 +158,7 @@ static bool make_token(char *e) {
                         for(int j=0;j<substr_len-1;j++){
                                 tokens[nr_token].str[j]=*(substr_start+j+1);
                         };
-                        nr_token++;
-                        break;
-		case TK_R_ESP:
-			tokens[nr_token].type=rules[i].token_type;
-                        for(int j=0;j<substr_len-1;j++){
-                                tokens[nr_token].str[j]=*(substr_start+j+1);
-                        };
-                        nr_token++;
-                        break;
-		case TK_R_EBP:
-			tokens[nr_token].type=rules[i].token_type;
-                        for(int j=0;j<substr_len-1;j++){
-                                tokens[nr_token].str[j]=*(substr_start+j+1);
-                        };
-                        nr_token++;
-                        break;
-		case TK_R_ESI:
-			tokens[nr_token].type=rules[i].token_type;
-                        for(int j=0;j<substr_len-1;j++){
-                                tokens[nr_token].str[j]=*(substr_start+j+1);
-                        };
-                        nr_token++;
-                        break;
-		case TK_R_EDI:
-			tokens[nr_token].type=rules[i].token_type;
-                        for(int j=0;j<substr_len-1;j++){
-                                tokens[nr_token].str[j]=*(substr_start+j+1);
-                        };
-                        nr_token++;
-                        break;
+                       */
 
                default: 
 			TODO();
