@@ -78,9 +78,8 @@ word_t isa_reg_str2val(const char *s, bool *success) {
 	  printf("%s -- %s\n",s,regsl[i]);
     if(strcmp(s,regsl[i])==0){
       *success=true;
-      break;
+      return cpu.gpr[i]._32;
     }
-    return cpu.gpr[i]._32;
   }
   return -1;
 }
