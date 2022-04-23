@@ -227,10 +227,10 @@ if (p > q) {
      * For now this token should be a number.
      * Return the value of the number.
      */
-	  if(tokens[p].type==TK_NUM){
+	  
 	   get_num_val(p);
       return 0;	
-	  }
+	  
   }
   else if (check_parentheses(p, q) == true) {
     /* The expression is surrounded by a matched pair of parentheses.
