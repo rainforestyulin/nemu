@@ -187,8 +187,10 @@ bool check_parentheses(int p,int  q){
 
 long int get_num_val(int p){
 	if(tokens[p].type==TK_NUM){
-		int i=sizeof(tokens[p].str);
-		printf("length is %d\n",i);
+		int i=0;
+		while(tokens[p].str[i]!='\0'){
+		 i++;
+		}
 	}
 	return 0;
 }
