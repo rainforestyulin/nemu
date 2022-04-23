@@ -178,10 +178,6 @@ static bool make_token(char *e) {
   return true;
 }
 
-bool make_tokens(char *c){
-	return make_token(c);
-}
-
 bool check_parentheses(int p,int  q){
 	if(tokens[p].type==TK_LPAR&&tokens[q].type==TK_RPAR){
 	return true;

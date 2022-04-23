@@ -9,7 +9,7 @@ void isa_reg_display(void);
 void cpu_exec(uint64_t);
 int is_batch_mode();
 word_t vaddr_read1(vaddr_t addr);
-bool make_tokens(char *c);
+word_t expr(char *e, bool *success);
 /* We use the `readline' library to provide more flexibility to read from stdin. */
 static char* rl_gets() {
   static char *line_read = NULL;
@@ -73,9 +73,9 @@ static int cmd_m_p(char *args){
 }
 
 static int cmd_e_p(char *args){
- if(make_tokens(args)){
- 	
- }
+	bool issuccess;
+        expr(args, &issuccess);
+      
   return 0;
 }
 
