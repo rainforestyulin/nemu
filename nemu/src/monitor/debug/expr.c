@@ -185,6 +185,14 @@ bool check_parentheses(int p,int  q){
 	return false;
 }
 
+long int get_num_val(int p){
+	if(tokens[p].type==TK_NUM){
+		int i=sizeof(tokens[p].str);
+		printf("length is %d\n",i);
+	}
+	return 0;
+}
+
 word_t eval(int p,int q){
 if (p > q) {
     /* Bad expression */
@@ -195,7 +203,7 @@ if (p > q) {
      * Return the value of the number.
      */
 	  if(tokens[p].type==TK_NUM){
-	printf("size of word_t %ld\n",sizeof(word_t));
+	   get_num_val(p);
       return 0;	
 	  }
   }
