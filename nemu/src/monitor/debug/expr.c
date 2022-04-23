@@ -200,7 +200,7 @@ long int get_num_val(int p){
 			val=val+(tokens[p].str[j]-48)*temp;
 
 		}
-		//printf("%ld\t %lx\n",val,val);
+		printf("%ld\t %lx\n",val,val);
 		return val;		
 	}else if(tokens[p].type==TK_R){
 		long int val=0;
