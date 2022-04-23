@@ -186,7 +186,6 @@ bool check_parentheses(int p,int  q){
 }
 
 long int get_num_val(int p){
-	printf("%s\n",tokens[p].str);
 	if(tokens[p].type==TK_NUM){
 		int i=0;
 		long int val=0;
@@ -201,7 +200,7 @@ long int get_num_val(int p){
 			val=val+(tokens[p].str[j]-48)*temp;
 
 		}
-		printf("%ld\t %lx\n",val,val);
+	//	printf("%ld\t %lx\n",val,val);
 		return val;		
 	}else if(tokens[p].type==TK_R){
 		long int val=0;
@@ -209,10 +208,9 @@ long int get_num_val(int p){
 		val=isa_reg_str2val(tokens[p].str,&issuccess);
 		if(issuccess==true){
 		printf("%ld\t %lx\n",val,val);
-		return val;}else{
-		printf("sdasdasdas\n");
-		}
-
+		return val;}
+	}else{
+		printf("invalid_expr\n");
 	}
 	return 0;
 }
