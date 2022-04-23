@@ -208,7 +208,9 @@ long int get_num_val(int p){
 		val=isa_reg_str2val(tokens[p].str,&issuccess);
 		if(issuccess==true){
 		printf("%ld\t %lx\n",val,val);
-		return val;}
+		return val;}else{
+		printf("sdasdasdas\n");
+		}
 
 	}
 	return 0;
