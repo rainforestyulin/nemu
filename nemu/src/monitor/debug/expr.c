@@ -191,6 +191,7 @@ long int get_num_val(int p){
 		while(tokens[p].str[i]!='\0'){
 		 i++;
 		}
+		printf("depth %d\n",i);
 	}
 	return 0;
 }
