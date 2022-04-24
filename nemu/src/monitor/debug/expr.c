@@ -196,14 +196,15 @@ bool check_parentheses(int p,int  q){
 			}else if(tokens[h_flag].type==TK_RPAR){
 				if(par_num>0){
 					par_num--;
+					h_flag++;
 				}else{
 					res=false;
 					break;
 					
 				}
-				h_flag++;
 			}else{
 				h_flag++;
+				Log("num");
 			}
 			Log("ttttttt\n");
 		}
