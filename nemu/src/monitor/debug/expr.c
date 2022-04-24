@@ -286,7 +286,7 @@ if (p > q) {
 	  int op_type=-1;
      	  for (int i=p;i<q;i++){
      		if(tokens[i].type==TK_LPAR){
-			int j=i;
+			int j=i+1;
 			int l_depth=1;
 			while(l_depth>0){
 				if(tokens[j].type==TK_LPAR){
