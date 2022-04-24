@@ -263,7 +263,9 @@ if (p > q) {
 				}
 				j++;
 			}
-			i=j;
+			if(j>i+1){
+				i=j;
+			}
 			op=i;
 			op_type=tokens[i].type;
 			break;
