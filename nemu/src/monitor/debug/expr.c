@@ -268,7 +268,7 @@ if (p > q) {
 				j++;
 			}
 			if(isfind){
-				i=j;
+				i=j-1;
 				continue;
 			}else{
 				op=i;
