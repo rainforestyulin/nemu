@@ -256,6 +256,14 @@ if (p > q) {
 		}else if(tokens[i].type==TK_NUM||tokens[i].type==TK_R){
 			continue;
 		}else if(tokens[i].type=='+'||tokens[i].type=='-'||tokens[i].type=='*'||tokens[i].type=='/'){
+			int j=i+1;
+			while(j<q){
+				if(tokens[j].type=='+'||tokens[j].type=='-'){
+					break;
+				}
+				j++;
+			}
+			i=j;
 			op=i;
 			op_type=tokens[i].type;
 			break;
