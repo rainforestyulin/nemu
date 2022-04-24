@@ -212,13 +212,8 @@ bool check_parentheses(int p,int  q){
 			}
 			Log("ttttttt\n");
 		}
-			if(par_num==0){
-				res=true;
-
 	  ///legall
-			}else{
-				res=false;
-			}
+	
 	}else{
 		res= false;
 	}
