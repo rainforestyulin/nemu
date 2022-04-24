@@ -179,7 +179,7 @@ static bool make_token(char *e) {
 }
 
 bool check_parentheses(int p,int  q){
-	bool res;
+	bool res=true;
 	Log("in chech\n");
 	if(tokens[p].type==TK_LPAR&&tokens[q].type==TK_RPAR){
 	//	bool islegall=false;
