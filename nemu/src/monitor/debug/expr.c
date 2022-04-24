@@ -182,28 +182,32 @@ bool check_parentheses(int p,int  q){
 	if(tokens[p].type==TK_LPAR&&tokens[q].type==TK_RPAR){
 	//	bool islegall=false;
 		int h_flag=p+1;
-		int t_flag=q-1-1;
+		int t_flag=q-2;
                 int par_num=0;
 	//	int rec=0;
 		while(h_flag<t_flag){
 			if(tokens[h_flag].type==TK_LPAR){
 				par_num++;
-			};
-			if(tokens[h_flag].type==TK_RPAR){
-				par_num--;
+			}else if(tokens[h_flag].type==TK_RPAR){
+				if(par_num>0){
+					par_num--;
+				}else{
+					return false;
+				}
 			};
 			h_flag++;
 			
 		}
-		if(par_num==0){
-			return true; 
+			if(par_num==0){
+				return true; 
 
 	  ///legall
+			}else{
+				return false;
+			}
 	}else{
-	return false;
+		return false;
 	}
-}else{
-return false;}
 }
 
 long int get_num_val(int p){
