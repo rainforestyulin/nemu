@@ -204,6 +204,7 @@ bool check_parentheses(int p,int  q){
 			if(res==false){
 			break;
 			}
+			Log("ttttttt\n");
 			
 		}
 			if(par_num==0){
