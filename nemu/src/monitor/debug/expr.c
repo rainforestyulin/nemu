@@ -259,6 +259,7 @@ if (p > q) {
 	}else if(tokens[i].type=='+'||tokens[i].type=='-'||tokens[i].type=='*'||tokens[i].type=='/'){
 		op=i;
 		op_type=tokens[i].type;
+		printf("%d---\n",op);
 		break;
 	}
      }	  
