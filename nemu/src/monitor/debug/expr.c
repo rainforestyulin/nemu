@@ -258,7 +258,7 @@ if (p > q) {
      * If that is the case, just throw away the parentheses.
      */
 	Log("tdsadasdasd\n");
-    return eval(p + 1, q - 1);
+    //return eval(p + 1, q - 1);
   }
   else {
 	 /* if(tokens[p].type==TK_NUM||tokes[p].type==TK_R){
