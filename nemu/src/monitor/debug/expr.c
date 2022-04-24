@@ -291,13 +291,16 @@ if (p > q) {
 			while(l_depth>0){
 				if(tokens[j].type==TK_LPAR){
 					l_depth++;
+					j++;
 				}else if(tokens[j].type==TK_RPAR){
 					l_depth--;
+					j++;
 					if(l_depth==0){
 						break;
 					}
+				}else{
+					j++;
 				}
-				j++;
 			}
 			i=j;
 			Log("i==%d",i);
