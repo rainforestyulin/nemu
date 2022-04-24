@@ -294,10 +294,12 @@ if (p > q) {
 					j++;
 				}else if(tokens[j].type==TK_RPAR){
 					l_depth--;
-					j++;
 					if(l_depth==0){
 						break;
+					}else{
+						j++;
 					}
+
 				}else{
 					j++;
 				}
