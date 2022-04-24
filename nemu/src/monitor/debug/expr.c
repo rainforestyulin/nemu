@@ -202,8 +202,8 @@ bool check_parentheses(int p,int  q){
 	}else{
 	return false;
 	}
-}
-return false;
+}else{
+return false;}
 }
 
 long int get_num_val(int p){
