@@ -201,7 +201,9 @@ bool check_parentheses(int p,int  q){
 					
 				}
 				h_flag++;
-			};
+			}else{
+				h_flag++;
+			}
 			if(res==false){
 			break;
 			}
