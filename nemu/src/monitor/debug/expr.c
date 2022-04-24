@@ -302,7 +302,7 @@ if (p > q) {
 					j++;
 				}
 			}
-			i=j-1;
+			i=j;
 			Log("i==%d",i);
 			continue;
 		}else if(tokens[i].type==TK_NUM||tokens[i].type==TK_R){
