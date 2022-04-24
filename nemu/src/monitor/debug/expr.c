@@ -180,9 +180,13 @@ static bool make_token(char *e) {
 
 bool check_parentheses(int p,int  q){
 	if(tokens[p].type==TK_LPAR&&tokens[q].type==TK_RPAR){
-	 return true;
-	}
+	  if(p<q){
+	  return check_parentheses(p+1,q-1);
+	  }
+	}else{
 	return false;
+	}
+	return true;
 }
 
 long int get_num_val(int p){
