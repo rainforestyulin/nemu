@@ -253,11 +253,9 @@ if (p > q) {
 			while(tokens[i].type!=TK_RPAR){
 				i++;
 			}
-		i++;
 		continue;
 		}else if(tokens[i].type==TK_NUM||tokens[i].type==TK_R){
 			printf("dsadasd\n");
-			i++;
 			continue;
 		}else if(tokens[i].type=='+'||tokens[i].type=='-'||tokens[i].type=='*'||tokens[i].type=='/'){
 			op=i;
