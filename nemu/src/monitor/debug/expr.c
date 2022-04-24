@@ -224,6 +224,7 @@ if (p > q) {
      * For now this token should be a number.
      * Return the value of the number.
      */
+	  printf("got num\n");
      return  get_num_val(p);	  
   }
   else if (check_parentheses(p, q) == true) {
@@ -284,8 +285,8 @@ word_t expr(char *e, bool *success) {
     *success = false;
     return 0;
   }
-  printf("___%d___nr_%d\n",eval(0,nr_token-1),nr_token);
-  
+  //printf("___%d___nr_%d\n",eval(0,nr_token-1),nr_token);
+  eval(0,nr_token-1);
   /* TODO: Insert codes to evaluate the expression. */
 //  TODO();
 
