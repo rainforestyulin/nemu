@@ -195,6 +195,7 @@ bool check_parentheses(int p,int  q){
 					par_num--;
 				}else{
 					res=false;
+					break;
 				}
 			};
 			h_flag++;
