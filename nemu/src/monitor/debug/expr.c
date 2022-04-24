@@ -180,13 +180,30 @@ static bool make_token(char *e) {
 
 bool check_parentheses(int p,int  q){
 	if(tokens[p].type==TK_LPAR&&tokens[q].type==TK_RPAR){
-	  if(p<q){
-	  return check_parentheses(p+1,q-1);
-	  }
+	//	bool islegall=false;
+		int h_flag=p+1;
+		int t_flag=q-1;
+                int par_num=0;
+	//	int rec=0;
+		while(h_flag<t_flag){
+			if(tokens[p].type==TK_LPAR){
+				par_num++;
+			};
+			if(tokens[p].type==TK_RPAR){
+				par_num--;
+			};
+			h_flag++;
+			t_flag--;
+		}
+		if(par_num==0){
+			return true; 
+
+	  ///legall
 	}else{
 	return false;
 	}
-	return true;
+}
+return false;
 }
 
 long int get_num_val(int p){
