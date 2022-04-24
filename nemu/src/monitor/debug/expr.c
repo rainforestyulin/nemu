@@ -282,9 +282,18 @@ if (p > q) {
 	  int op_type=-1;
      	  for (int i=p;i<q;i++){
      		if(tokens[i].type==TK_LPAR){
-			int j=q;
-			while(tokens[j].type!=TK_RPAR){
-				j--;
+			int j=i;
+			int l_depth=1;
+			while(l_depth>0){
+				if(tokens[j].type==TK_LPAR){
+					l_depth++;
+				}else if(tokens[j].type==TK_RPAR){
+					l_depth--;
+					if(l_depth==0){
+						break;
+					}
+				}
+				j++;
 			}
 			i=j;
 			continue;
