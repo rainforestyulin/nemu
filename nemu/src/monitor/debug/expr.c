@@ -247,7 +247,8 @@ if (p > q) {
 	  }*/
 	  int op=-1;
 	  int op_type=-1;
-     	  for (int i=p;i<q;i++){
+	  int i=p;
+     	  for (;i<q;i++){
      		if(tokens[i].type==TK_LPAR){
 			while(tokens[i].type!=TK_RPAR){
 				i++;
