@@ -198,18 +198,14 @@ bool check_parentheses(int p,int  q){
 					par_num--;
 				}else{
 					res=false;
+					break;
 					
 				}
 				h_flag++;
 			}else{
 				h_flag++;
 			}
-			if(res==false){
-				Log("false");
-			break;
-			}
 			Log("ttttttt\n");
-			
 		}
 			if(par_num==0){
 				res=true;
