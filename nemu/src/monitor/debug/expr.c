@@ -281,7 +281,6 @@ if (p > q) {
 	  }else if(tokens[p].type==TK_LPAR){
 	  
 	  }*/
-	  Log("errrr");
 	  int op=-1;
 	  int op_type=-1;
      	  for (int i=p;i<q;i++){
@@ -325,9 +324,11 @@ if (p > q) {
      	}	  
     /* We should do more things here. */
     //op = the position of 主运算符 in the token expression;
-   long int  val1 = eval(p, op - 1);
-   long int  val2 = eval(op + 1, q);
-
+    long int val1=0,val2=0;
+    if(op_type=='+'||op_type=='-'||op_type=='*'||op_type=='/'){
+   	 val1 = eval(p, op - 1);
+         val2 = eval(op + 1, q);
+    }
     switch (op_type) {
       case '+': return val1 + val2; break;
       case '-': return val1 - val2; break;
