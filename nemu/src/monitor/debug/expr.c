@@ -313,7 +313,30 @@ if (p > q) {
 			int j=i+1;
 			bool  isfind=false;
 			while(j<q){
-				if(tokens[j].type=='+'||tokens[j].type=='-'){
+				if(tokens[j].type==TK_LPAR){
+                        	int jj=j+1;
+                        	int l_depth=1;
+                        	while(l_depth>0){
+                                	if(tokens[jj].type==TK_LPAR){
+                                        	l_depth++;
+                                        	jj++;
+                                	}else if(tokens[jj].type==TK_RPAR){
+                                       		 l_depth--;
+                                        	if(l_depth==0){
+                                                break;
+                                        	}else{
+                                                	jj++;
+                                        	}
+
+                               		 }else{
+                                        	j++;
+                                         }
+                       		 }
+				j=jj;
+				continue;
+				}
+			////
+				else if(tokens[j].type=='+'||tokens[j].type=='-'){
 					isfind=true;
 					break;
 				}
