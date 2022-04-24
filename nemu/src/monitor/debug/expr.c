@@ -182,7 +182,7 @@ bool check_parentheses(int p,int  q){
 	if(tokens[p].type==TK_LPAR&&tokens[q].type==TK_RPAR){
 	//	bool islegall=false;
 		int h_flag=p+1;
-		int t_flag=q-2;
+		int t_flag=q-1;
                 int par_num=0;
 	//	int rec=0;
 		while(h_flag<t_flag){
@@ -275,7 +275,7 @@ if (p > q) {
 	  int op_type=-1;
      	  for (int i=p;i<q;i++){
      		if(tokens[i].type==TK_LPAR){
-			int j=q-1;
+			int j=q;
 			while(tokens[j].type!=TK_RPAR){
 				j--;
 			}
