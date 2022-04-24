@@ -224,9 +224,7 @@ if (p > q) {
      * For now this token should be a number.
      * Return the value of the number.
      */
-      get_num_val(p);
-      return 0;	
-	  
+     return  get_num_val(p);	  
   }
   else if (check_parentheses(p, q) == true) {
     /* The expression is surrounded by a matched pair of parentheses.
@@ -235,7 +233,47 @@ if (p > q) {
     return eval(p + 1, q - 1);
   }
   else {
+	 /* if(tokens[p].type==TK_NUM||tokes[p].type==TK_R){
+	  	long int val1=get_num_val(p);
+		return val1+eval(p+1,q);
+	  }else if(tokens[p].type=='+'||tokens[p].type=='-'||tokens[p].type=='*'||tokens[p].type=='/'){
+	  	int op=p;
+		long int val1=eval(p,op-1);
+		long int val2=eval(op+1,q);
+		switch(tokens[p].type)
+	  }else if(tokens[p].type==TK_LPAR){
+	  
+	  }*/
+	  int op=-1;
+	  int op_type=-1;
+     for (int i=p;i<q;i++){
+     	if(tokens[i].type==TK_LPAR){
+		while(tokens[i].type!=TK_RPAR){
+			i++;
+		}
+		i++;
+		continue;
+	}else if(tokens[i].type==TK_NUM||tokens[i].type==TK_R){
+		i++;
+		continue;
+	}else if(tokens[i].type=='+'||tokens[i].type=='-'||tokens[i].type=='*'||tokens[i].type=='/'){
+		op=i;
+		op_type=tokens[i].type;
+		break;
+	}
+     }	  
     /* We should do more things here. */
+    //op = the position of 主运算符 in the token expression;
+   long int  val1 = eval(p, op - 1);
+   long int  val2 = eval(op + 1, q);
+
+    switch (op_type) {
+      case '+': return val1 + val2; break;
+      case '-': return val1 - val2; break;
+      case '*': return val1 * val2; break;
+      case '/': return val1 / val2; break;
+      default: assert(0); break;
+    }
   }
   return 0;
 }
