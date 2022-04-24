@@ -138,28 +138,6 @@ static bool make_token(char *e) {
                         };
                         nr_token++;
 			break;
-			/*
-		case TK_R_ECX:
-			tokens[nr_token].type=rules[i].token_type;
-                        for(int j=0;j<substr_len-1;j++){
-                                tokens[nr_token].str[j]=*(substr_start+j+1);
-                        };
-                        nr_token++;
-                        break;
-		case TK_R_EDX:
-			tokens[nr_token].type=rules[i].token_type;
-                        for(int j=0;j<substr_len-1;j++){
-                                tokens[nr_token].str[j]=*(substr_start+j+1);
-                        };
-                        nr_token++;
-                        break;
-		case TK_R_EBX:
-			tokens[nr_token].type=rules[i].token_type;
-                        for(int j=0;j<substr_len-1;j++){
-                                tokens[nr_token].str[j]=*(substr_start+j+1);
-                        };
-                       */
-
                default: 
 			TODO();
 		        break;
@@ -271,17 +249,6 @@ if (p > q) {
     return eval(p + 1, q - 1);
   }
   else {
-	 /* if(tokens[p].type==TK_NUM||tokes[p].type==TK_R){
-	  	long int val1=get_num_val(p);
-		return val1+eval(p+1,q);
-	  }else if(tokens[p].type=='+'||tokens[p].type=='-'||tokens[p].type=='*'||tokens[p].type=='/'){
-	  	int op=p;
-		long int val1=eval(p,op-1);
-		long int val2=eval(op+1,q);
-		switch(tokens[p].type)
-	  }else if(tokens[p].type==TK_LPAR){
-	  
-	  }*/
 	  int op=-1;
 	  int op_type=-1;
      	  for (int i=p;i<q;i++){
@@ -307,13 +274,16 @@ if (p > q) {
 			i=j;
 			Log("i==%d",i);
 			continue;
-		}else if(tokens[i].type==TK_NUM||tokens[i].type==TK_R){
+		}
+			else if(tokens[i].type==TK_NUM||tokens[i].type==TK_R){
 			continue;
-		}else if(tokens[i].type=='+'||tokens[i].type=='-'||tokens[i].type=='*'||tokens[i].type=='/'){
-			int j=i+1;
-			bool  isfind=false;
-			while(j<q){
-				if(tokens[j].type==TK_LPAR){
+		}
+			else if(tokens[i].type=='+'||tokens[i].type=='-'||tokens[i].type=='*'||tokens[i].type=='/')
+		    {
+				int j=i+1;
+				bool  isfind=false;
+				while(j<q){
+					if(tokens[j].type==TK_LPAR){
                         	int jj=j+1;
                         	int l_depth=1;
                         	while(l_depth>0){
@@ -329,34 +299,41 @@ if (p > q) {
                                         	}
 
                                		 }else{
-                                        	j++;
-                                         }
+                                        	jj++;
+                                     }
                        		 }
-				j=jj;
-				continue;
-				}
+							j=jj+1;
+							continue;
+					}
+					else if (tokens[j].type == '+' || tokens[j].type == '-') {
+						isfind = true;
+						break;
+					}
+					else 
+					{
+						j++;
+					}
+					
+
 			////
-				else if(tokens[j].type=='+'||tokens[j].type=='-'){
-					isfind=true;
+			    }
+			
+			
+				if(isfind){
+					i=j-1;
+					continue;
+				}else{
+					op=i;
+					op_type=tokens[i].type;
 					break;
 				}
-				j++;
 			}
-			if(isfind){
-				i=j-1;
-				continue;
-			}else{
-				op=i;
-				op_type=tokens[i].type;
-				break;
-			}
-		}
      	}	  
     /* We should do more things here. */
     //op = the position of 主运算符 in the token expression;
     long int val1=0,val2=0;
     if(op_type=='+'||op_type=='-'||op_type=='*'||op_type=='/'){
-   	 val1 = eval(p, op - 1);
+   	     val1 = eval(p, op - 1);
          val2 = eval(op + 1, q);
     }
     switch (op_type) {
