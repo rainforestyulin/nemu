@@ -205,6 +205,7 @@ bool check_parentheses(int p,int  q){
 				h_flag++;
 			}
 			if(res==false){
+				Log("false");
 			break;
 			}
 			Log("ttttttt\n");
