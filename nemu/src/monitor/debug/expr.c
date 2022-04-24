@@ -188,16 +188,20 @@ bool check_parentheses(int p,int  q){
                 int par_num=0;
 	//	int rec=0;
 		while(h_flag<t_flag){
-			Log("aaaaa\n");
+			
 			if(tokens[h_flag].type==TK_LPAR){
 				par_num++;
 				h_flag++;
+				Log("L");
 				continue;
 			}else if(tokens[h_flag].type==TK_RPAR){
+				Log("R");
 				if(par_num>0){
 					par_num--;
 					h_flag++;
+					Log("R+");
 				}else{
+					Log("break");
 					res=false;
 					break;
 					
