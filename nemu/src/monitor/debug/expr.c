@@ -181,7 +181,7 @@ static bool make_token(char *e) {
 bool check_parentheses(int p,int  q){
 	Log("in chech\n");
 	if(tokens[p].type==TK_LPAR&&tokens[q].type==TK_RPAR){
-	//	bool islegall=false;
+/*	//	bool islegall=false;
 		int h_flag=p+1;
 		int t_flag=q-1;
                 int par_num=0;
@@ -208,7 +208,8 @@ bool check_parentheses(int p,int  q){
 			}
 	}else{
 		return false;
-	}
+	}*/}
+		return true;
 }
 
 long int get_num_val(int p){
@@ -258,7 +259,7 @@ if (p > q) {
      * If that is the case, just throw away the parentheses.
      */
 	Log("tdsadasdasd\n");
-    //return eval(p + 1, q - 1);
+    return eval(p + 1, q - 1);
   }
   else {
 	 /* if(tokens[p].type==TK_NUM||tokes[p].type==TK_R){
