@@ -247,23 +247,24 @@ if (p > q) {
 	  }*/
 	  int op=-1;
 	  int op_type=-1;
-     for (int i=p;i<q;i++){
-     	if(tokens[i].type==TK_LPAR){
-		while(tokens[i].type!=TK_RPAR){
+     	  for (int i=p;i<q;i++){
+     		if(tokens[i].type==TK_LPAR){
+			while(tokens[i].type!=TK_RPAR){
+				i++;
+			}
+		i++;
+		continue;
+		}else if(tokens[i].type==TK_NUM||tokens[i].type==TK_R){
+			printf("dsadasd\n");
 			i++;
+			continue;
+		}else if(tokens[i].type=='+'||tokens[i].type=='-'||tokens[i].type=='*'||tokens[i].type=='/'){
+			op=i;
+			op_type=tokens[i].type;
+			printf("%d---\n",op);
+			break;
 		}
-		i++;
-		continue;
-	}else if(tokens[i].type==TK_NUM||tokens[i].type==TK_R){
-		i++;
-		continue;
-	}else if(tokens[i].type=='+'||tokens[i].type=='-'||tokens[i].type=='*'||tokens[i].type=='/'){
-		op=i;
-		op_type=tokens[i].type;
-		printf("%d---\n",op);
-		break;
-	}
-     }	  
+     	}	  
     /* We should do more things here. */
     //op = the position of 主运算符 in the token expression;
    long int  val1 = eval(p, op - 1);
