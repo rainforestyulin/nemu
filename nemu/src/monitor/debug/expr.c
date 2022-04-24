@@ -192,31 +192,31 @@ bool check_parentheses(int p,int  q){
 			if(tokens[h_flag].type==TK_LPAR){
 				par_num++;
 				h_flag++;
-				Log("L");
+				//Log("L");
 				continue;
 			}else if(tokens[h_flag].type==TK_RPAR){
-				Log("R");
+				//Log("R");
 				if(par_num>0){
 					par_num--;
 					h_flag++;
-					Log("R+");
+					//Log("R+");
 				}else{
-					Log("break");
+					//Log("break");
 					res=false;
 					break;
 					
 				}
 			}else{
 				h_flag++;
-				Log("num");
+			//	Log("num");
 			}
-			Log("ttttttt\n");
+			//Log("ttttttt\n");
 		}
 	  ///legall
 	
 	}else{
 		res= false;
-		Log("judge over");
+		Log("false");
 	}
 		return res;
 }
