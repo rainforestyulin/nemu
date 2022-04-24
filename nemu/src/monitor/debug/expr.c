@@ -281,6 +281,7 @@ if (p > q) {
 	  }else if(tokens[p].type==TK_LPAR){
 	  
 	  }*/
+	  Log("errrr");
 	  int op=-1;
 	  int op_type=-1;
      	  for (int i=p;i<q;i++){
