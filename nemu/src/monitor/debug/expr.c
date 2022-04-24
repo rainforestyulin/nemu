@@ -247,20 +247,17 @@ if (p > q) {
 	  }*/
 	  int op=-1;
 	  int op_type=-1;
-	  int i=p;
-     	  for (;i<q;i++){
+     	  for (int i=p;i<q;i++){
      		if(tokens[i].type==TK_LPAR){
 			while(tokens[i].type!=TK_RPAR){
 				i++;
 			}
-		continue;
+			continue;
 		}else if(tokens[i].type==TK_NUM||tokens[i].type==TK_R){
-			printf("dsadasd\n");
 			continue;
 		}else if(tokens[i].type=='+'||tokens[i].type=='-'||tokens[i].type=='*'||tokens[i].type=='/'){
 			op=i;
 			op_type=tokens[i].type;
-			printf("%d---\n",op);
 			break;
 		}
      	}	  
@@ -285,8 +282,8 @@ word_t expr(char *e, bool *success) {
     *success = false;
     return 0;
   }
-  //printf("___%d___nr_%d\n",eval(0,nr_token-1),nr_token);
-  eval(0,nr_token-1);
+  printf("___%d___nr_%d\n",eval(0,nr_token-1),nr_token);
+ // eval(0,nr_token-1);
   /* TODO: Insert codes to evaluate the expression. */
 //  TODO();
 
