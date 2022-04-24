@@ -186,14 +186,14 @@ bool check_parentheses(int p,int  q){
                 int par_num=0;
 	//	int rec=0;
 		while(h_flag<t_flag){
-			if(tokens[p].type==TK_LPAR){
+			if(tokens[h_flag].type==TK_LPAR){
 				par_num++;
 			};
-			if(tokens[p].type==TK_RPAR){
+			if(tokens[h_flag].type==TK_RPAR){
 				par_num--;
 			};
 			h_flag++;
-			t_flag--;
+			
 		}
 		if(par_num==0){
 			return true; 
