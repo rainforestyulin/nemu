@@ -216,6 +216,7 @@ bool check_parentheses(int p,int  q){
 	
 	}else{
 		res= false;
+		Log("judge over");
 	}
 		return res;
 }
