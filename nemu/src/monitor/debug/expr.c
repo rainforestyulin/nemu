@@ -180,7 +180,7 @@ static bool make_token(char *e) {
 
 bool check_parentheses(int p,int  q){
 	bool res=true;
-	Log("in chech\n");
+	Log("in chech_%d_%d\n",p,q);
 	if(tokens[p].type==TK_LPAR&&tokens[q].type==TK_RPAR){
 	//	bool islegall=false;
 		int h_flag=p+1;
