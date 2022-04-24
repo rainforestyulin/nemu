@@ -187,7 +187,7 @@ bool check_parentheses(int p,int  q){
 		int t_flag=q-1;
                 int par_num=0;
 	//	int rec=0;
-		while(h_flag<t_flag){
+		while(h_flag<=t_flag){
 			
 			if(tokens[h_flag].type==TK_LPAR){
 				par_num++;
