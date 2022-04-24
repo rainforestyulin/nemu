@@ -257,18 +257,21 @@ if (p > q) {
 			continue;
 		}else if(tokens[i].type=='+'||tokens[i].type=='-'||tokens[i].type=='*'||tokens[i].type=='/'){
 			int j=i+1;
+			int isfind=0;
 			while(j<q){
 				if(tokens[j].type=='+'||tokens[j].type=='-'){
+					isfind=1;
 					break;
 				}
 				j++;
 			}
-			if(j>i+1){
+			if(isfind==1){
 				i=j;
-			}
+				continue;
+			}else{
 			op=i;
 			op_type=tokens[i].type;
-			break;
+			break;}
 		}
      	}	  
     /* We should do more things here. */
