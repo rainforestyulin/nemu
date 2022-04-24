@@ -284,7 +284,7 @@ word_t expr(char *e, bool *success) {
     *success = false;
     return 0;
   }
- // printf("___%d___\n",eval(0,2));
+  printf("___%d___nr_%d\n",0,nr_token);
   
   /* TODO: Insert codes to evaluate the expression. */
 //  TODO();
