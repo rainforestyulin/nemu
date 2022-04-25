@@ -454,6 +454,7 @@ if (p > q) {
    	     val1 = eval(p, op - 1);
              val2 = eval(op + 1, q);
 	   }else{
+		 Log("els truue");
 	   	val2=eval(op+1,q);
 		isptr=false;
 	   };
