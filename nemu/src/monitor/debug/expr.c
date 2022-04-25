@@ -138,6 +138,13 @@ static bool make_token(char *e) {
                         };
                         nr_token++;
 			break;
+		case TK_EQ:
+			tokens[nr_token].type=rules[i].token_type;
+			for(int j=0;j<substr_len;j++){
+				tokens[nr_token].str[j]=*(substr_start+j);
+			};
+			nr_token++;
+			break;
                default: 
 			TODO();
 			break;
@@ -278,7 +285,7 @@ if (p > q) {
 			else if(tokens[i].type==TK_NUM||tokens[i].type==TK_R){
 			continue;
 		}
-			else if(tokens[i].type=='+'||tokens[i].type=='-'||tokens[i].type=='*'||tokens[i].type=='/')
+			else if(tokens[i].type=='+'||tokens[i].type=='-'||tokens[i].type=='*'||tokens[i].type=='/'||tokens[i].type==TK_EQ)
 		    {
 				int j=i+1;
 				bool  isfind=false;
@@ -332,7 +339,7 @@ if (p > q) {
     /* We should do more things here. */
     //op = the position of 主运算符 in the token expression;
     long int val1=0,val2=0;
-    if(op_type=='+'||op_type=='-'||op_type=='*'||op_type=='/'){
+    if(op_type=='+'||op_type=='-'||op_type=='*'||op_type=='/'||op_type==TK_EQ){
    	     val1 = eval(p, op - 1);
          val2 = eval(op + 1, q);
     }
@@ -346,6 +353,12 @@ if (p > q) {
 			panic("Wdiv 0 err!");
 			assert(0);
 		}
+      case TK_EQ: if(val1==val2){
+		  return 1;
+		  }else{
+		  return 0;
+		  }
+		  break;
       default: Log("invalid_expr");
 		assert(0); break;
     }
