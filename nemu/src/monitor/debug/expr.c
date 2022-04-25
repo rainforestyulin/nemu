@@ -230,7 +230,7 @@ long int get_num_val(int p){
                         	for(int jj=i-j-1;jj>0;jj--){
                         		temp=temp*16;
                         	}
-                        	val=val+(tokens[p].str[j]-48)*temp;
+                        	val=val+(tokens[p].str[j+2]-48)*temp;
 
                		}
                 	printf("val_%ld",val);
