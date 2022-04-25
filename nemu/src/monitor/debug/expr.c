@@ -6,7 +6,7 @@
 #include <regex.h>
 
 enum {
-  TK_NOTYPE = 256, TK_EQ, TK_LPAR, TK_RPAR, TK_NUM, TK_R
+  TK_NOTYPE = 256, TK_EQ, TK_LPAR, TK_RPAR, TK_NUM, TK_R, TK_N_EQ, TK_AND
 
   /* TODO: Add more token types */
 
@@ -30,6 +30,8 @@ static struct rule {
   {"\\*",'*'},		// mul
   {"\\/",'/'},		// div
   {"==", TK_EQ},        // equal
+  {"!=",TK_N_EQ},	//not equal
+  {"&&",TK_AND},        //and
   {"\%eax",TK_R},
   {"\%ecx",TK_R},
   {"\%edx",TK_R},
@@ -148,6 +150,21 @@ static bool make_token(char *e) {
 			};
 			nr_token++;
 			break;
+		case TK_N_EQ:
+                        tokens[nr_token].type=rules[i].token_type;
+                        for(int j=0;j<substr_len;j++){
+                                tokens[nr_token].str[j]=*(substr_start+j);
+                        };
+                        nr_token++;
+                        break;
+		case TK_AND:
+                        tokens[nr_token].type=rules[i].token_type;
+                        for(int j=0;j<substr_len;j++){
+                                tokens[nr_token].str[j]=*(substr_start+j);
+                        };
+                        nr_token++;
+                        break;
+
 	/*	case TK_NUM_X:
 			tokens[nr_token].type=rules[i].token_type;
 			for(int j=0;j<substr_len-2;j++){
@@ -222,7 +239,7 @@ long int get_num_val(int p){
 			int i=0;
         	        long int val=0;
                		while(tokens[p].str[i]!='\0'){
-				 printf("-%c-",tokens[p].str[i]);
+				 //printf("-%c-",tokens[p].str[i]);
 				 i++;
                 	}
 			i=i-2;
@@ -316,7 +333,7 @@ if (p > q) {
 			else if(tokens[i].type==TK_NUM||tokens[i].type==TK_R){
 			continue;
 		}
-			else if(tokens[i].type=='+'||tokens[i].type=='-'||tokens[i].type=='*'||tokens[i].type=='/'||tokens[i].type==TK_EQ)
+			else if(tokens[i].type=='+'||tokens[i].type=='-'||tokens[i].type=='*'||tokens[i].type=='/'||tokens[i].type==TK_EQ||tokens[i].type==TK_N_EQ||tokens[i].type==TK_AND)
 		    {
 				int j=i+1;
 				bool  isfind=false;
@@ -370,10 +387,11 @@ if (p > q) {
     /* We should do more things here. */
     //op = the position of 主运算符 in the token expression;
     long int val1=0,val2=0;
-    if(op_type=='+'||op_type=='-'||op_type=='*'||op_type=='/'||op_type==TK_EQ){
+    assert(op!=-1);
+    //if(op_type=='+'||op_type=='-'||op_type=='*'||op_type=='/'||op_type==TK_EQ){
    	     val1 = eval(p, op - 1);
-         val2 = eval(op + 1, q);
-    }
+             val2 = eval(op + 1, q);
+  //}
     switch (op_type) {
       case '+': return val1 + val2; break;
       case '-': return val1 - val2; break;
@@ -385,11 +403,23 @@ if (p > q) {
 			assert(0);
 		}
       case TK_EQ: if(val1==val2){
-		  return 1;
+		  	return 1;
 		  }else{
-		  return 0;
+		  	return 0;
 		  }
 		  break;
+      case TK_N_EQ: if(val1!=val2){
+                 	 return 1;
+                  }else{
+                  	return 0;
+                  }
+                  break;
+      case TK_AND: if(val1*val2!=0){
+		   	return 1;
+		   }else{
+		   	return 0;
+		   }
+                  break;
       default: Log("invalid_expr");
 		assert(0); break;
     }
