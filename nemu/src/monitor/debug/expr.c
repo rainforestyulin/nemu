@@ -351,7 +351,8 @@ word_t expr(char *e, bool *success) {
   if (!make_token(e)) {
     *success = false;
     return 0;
-  }
+  };
+  Log("--%d--",nr_token-1);
   long int a=eval(0,nr_token-1);
   printf("%ld\t%lx\n",a,a);
  // eval(0,nr_token-1);
