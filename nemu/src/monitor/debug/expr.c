@@ -382,8 +382,9 @@ if (p > q) {
 				}
 				k++;
 			}
-
-			return vaddr_read1(eval(i + 1, k - 1));
+			long int addr=eval(i+1,k-1);
+			Log("addr is%lx",addr);
+			return vaddr_read1(addr);
 			continue;
 			
 		  }
