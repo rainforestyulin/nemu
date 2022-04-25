@@ -390,6 +390,7 @@ if (p > q) {
 			val1= vaddr_read1(addr);
 			isptr=true;
 			i=k;
+			Log("dadadadadad%d",i);
 			continue;
 			
 		  }
