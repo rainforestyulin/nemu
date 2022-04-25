@@ -140,8 +140,9 @@ static bool make_token(char *e) {
 			break;
                default: 
 			TODO();
-		        break;
-        }
+			break;
+        Log("nr_buf_%d",nr_token);
+	}
 
         break;
       }
