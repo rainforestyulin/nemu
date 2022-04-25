@@ -459,7 +459,7 @@ if (p > q) {
 		 Log("els truue%d",op);
 	   	val2=eval(op+1,q);
 		isptr=false;}else{
-			return val;
+			return val1;
 		}
 	   };
     switch (op_type) {
