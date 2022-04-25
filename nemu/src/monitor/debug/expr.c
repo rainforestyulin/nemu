@@ -217,7 +217,7 @@ bool check_parentheses(int p,int  q){
 long int get_num_val(int p){
 	if(tokens[p].type==TK_NUM){/////
 		if(tokens[p].str[1]=='x'||tokens[p].str[1]=='X'){
-			int i=-2;
+			int i=-1;
         	        long int val=0;
                		while(tokens[p].str[i]!='\0'){
                 		 i++;
