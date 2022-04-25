@@ -455,9 +455,12 @@ if (p > q) {
    	     val1 = eval(p, op - 1);
              val2 = eval(op + 1, q);
 	   }else{
+		   if(op!=-1){
 		 Log("els truue%d",op);
 	   	val2=eval(op+1,q);
-		isptr=false;
+		isptr=false;}else{
+			return val;
+		}
 	   };
     switch (op_type) {
       case '+': val=val1+val2;
