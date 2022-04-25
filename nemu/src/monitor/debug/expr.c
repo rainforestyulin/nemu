@@ -6,7 +6,7 @@
 #include <regex.h>
 
 enum {
-  TK_NOTYPE = 256, TK_EQ, TK_LPAR, TK_RPAR, TK_NUM, TK_R, TK_NUM_X
+  TK_NOTYPE = 256, TK_EQ, TK_LPAR, TK_RPAR, TK_NUM, TK_R
 
   /* TODO: Add more token types */
 
@@ -146,13 +146,13 @@ static bool make_token(char *e) {
 			};
 			nr_token++;
 			break;
-		case TK_NUM_X:
+	/*	case TK_NUM_X:
 			tokens[nr_token].type=rules[i].token_type;
 			for(int j=0;j<substr_len-2;j++){
 				tokens[nr_token].str[j]=*(substr_start+j+2);
 			}
 			nr_token++;
-			break;
+			break;*/
                default: 
 			TODO();
 			break;
@@ -215,7 +215,24 @@ bool check_parentheses(int p,int  q){
 }
 
 long int get_num_val(int p){
-	if(tokens[p].type==TK_NUM){
+	if(tokens[p].type==TK_NUM){/////
+		if(tokens[p].str[1]=='x'||tokens[p].str[1]=='X'){
+			int i=-2;
+        	        long int val=0;
+               		while(tokens[p].str[i]!='\0'){
+                		 i++;
+                	}
+               		for(int j=0;j<i;j++){
+                        	int temp=1;
+                        	for(int jj=i-j-1;jj>0;jj--){
+                        		temp=temp*16;
+                        	}
+                        	val=val+(tokens[p].str[j]-48)*temp;
+
+               		}
+                	printf("xxxxx");
+                	return val;
+		}else{
 		int i=0;
 		long int val=0;
 		while(tokens[p].str[i]!='\0'){
@@ -230,8 +247,9 @@ long int get_num_val(int p){
 
 		}
 		//printf("%ld\t %lx\n",val,val);
-		return val;		
-	}else if(tokens[p].type==TK_R){
+		return val;
+		}		
+	}else if(tokens[p].type==TK_R){//////
 		long int val=0;
 		bool issuccess=false;
 		val=isa_reg_str2val(tokens[p].str,&issuccess);
