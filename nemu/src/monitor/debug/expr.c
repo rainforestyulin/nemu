@@ -217,11 +217,14 @@ bool check_parentheses(int p,int  q){
 long int get_num_val(int p){
 	if(tokens[p].type==TK_NUM){/////
 		if(tokens[p].str[1]=='x'||tokens[p].str[1]=='X'){
-			int i=-1;
+			int i=0;
         	        long int val=0;
                		while(tokens[p].str[i]!='\0'){
                 		 i++;
+				 printf("-%c-",tokens[p].str[i]);
                 	}
+			i=i-2;
+			printf("i_%d",i);
                		for(int j=0;j<i;j++){
                         	int temp=1;
                         	for(int jj=i-j-1;jj>0;jj--){
@@ -230,7 +233,7 @@ long int get_num_val(int p){
                         	val=val+(tokens[p].str[j]-48)*temp;
 
                		}
-                	printf("x_%ld",val);
+                	printf("val_%ld",val);
                 	return val;
 		}else{
 		int i=0;
