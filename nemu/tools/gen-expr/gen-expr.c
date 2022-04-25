@@ -12,8 +12,8 @@ static char code_buf[65536 + 128] = {}; // a little larger than `buf`
 static char *code_format =
 "#include <stdio.h>\n"
 "int main() { "
-"  signed result = %s; "
-"  printf(\"%%d\", result); "
+"  unsigned result = %s; "
+"  printf(\"%%u\", result); "
 "  return 0; "
 "}";
 void val_deal(int val,char *c,int *maxdepth_p,int *buf_nr_p){
@@ -117,7 +117,7 @@ int main(int argc, char *argv[]) {
     assert(fscanf(fp, "%d", &result));
     pclose(fp);
 
-    printf("%d---- %s\n", result, buf);
+    printf("%u---- %s\n", result, buf);
     //buf[0] = '\0';
   }
   for(int i=0;i<buf_nr;i++){
