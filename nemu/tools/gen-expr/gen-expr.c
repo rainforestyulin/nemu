@@ -81,16 +81,17 @@ void gen_rand_op(){
 };
 
 static void gen_rand_expr() {
+	assert(buf_nr<65530);
 	switch (choose(3)) {
   	case 0: gen_num(); break;
     	case 1: gen('('); gen_rand_expr(); gen(')'); break;
     	default: gen_rand_expr(); gen_rand_op(); gen_rand_expr(); break;
   };
-	//  buf[0] = '\0';
+	  buf[buf_nr] = '\0';
 }
 
 int main(int argc, char *argv[]) {
-	for (int i=0;i<2;i++){
+/*	for (int i=0;i<2;i++){
 		buf_nr=0;
 		gen_rand_expr();
 	
@@ -101,7 +102,7 @@ int main(int argc, char *argv[]) {
 	}
   printf("\n");
   return 0;
-
+*/
   int seed = time(0);
   srand(seed);
   int loop = 1;
