@@ -4,7 +4,7 @@
  * Type 'man regex' for more information about POSIX regex functions.
  */
 #include <regex.h>
-word_t vaddr_read1(vaddr_t addr);
+
 
 enum {
   TK_NOTYPE = 256, TK_EQ, TK_LPAR, TK_RPAR, TK_NUM, TK_R, TK_N_EQ, TK_AND, TK_PTR
@@ -382,7 +382,7 @@ if (p > q) {
 				k++;
 			}
 
-			return vaddr_read1(eval(i + 1, k - 1));
+		//	return vaddr_read1(eval(i + 1, k - 1));
 			continue;
 			
 		  }
