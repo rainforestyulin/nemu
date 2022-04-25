@@ -21,7 +21,7 @@ static struct rule {
    * Pay attention to the precedence level of different rules.
    */
   {"[0-9]+",TK_NUM},
-  {"0x+[0-9]+|0X+[0-9]+",TK_NUM_X},
+  {"0x",TK_NUM_X},
   {"\\(",TK_LPAR},
   {"\\)",TK_RPAR},
   {" +", TK_NOTYPE},    // spaces
