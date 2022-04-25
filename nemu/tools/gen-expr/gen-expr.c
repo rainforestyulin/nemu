@@ -61,6 +61,7 @@ void gen_num(){
         int temp=0;
         srand((int)(time(0) + rand()));
         temp=rand()%100;
+	//printf("%d\n",temp);
 	//printf("temp_is_%d \n",temp);
         val_deal_tool(temp,buf,&buf_nr);
 	/*for(int i=0;i<buf_nr;i++){
@@ -89,6 +90,18 @@ static void gen_rand_expr() {
 }
 
 int main(int argc, char *argv[]) {
+	for (int i=0;i<2;i++){
+		buf_nr=0;
+		gen_rand_expr();
+	
+	for(int i=0;i<buf_nr;i++){
+        printf("%c",buf[i]);
+        };
+	printf("\n");
+	}
+  printf("\n");
+  return 0;
+
   int seed = time(0);
   srand(seed);
   int loop = 1;

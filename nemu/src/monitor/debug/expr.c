@@ -143,8 +143,6 @@ static bool make_token(char *e) {
 			break;
         //Log("nr_buf_%d",nr_token);
 	}
-
-	Log("nr_buf_%d",nr_token);
         break;
       }
     }
