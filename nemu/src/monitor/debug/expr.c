@@ -366,10 +366,12 @@ if (p > q) {
                         	Log("k==%d",k);
                         	continue;
 				}else if(tokens[k].type==TK_NUM||tokens[k].type==TK_R){
-				
+					k++;
+					continue;	
 				}else {
+					//k_is the flag;
 					//long int temp=0;
-					Log("!!");
+					Log("%d",k);
 
 				}
 			}
