@@ -447,7 +447,7 @@ if (p > q) {
     /* We should do more things here. */
     //op = the position of 主运算符 in the token expression;
    // long int val1=0,val2=0;
-    assert(op!=-1);
+    assert(op!=-1&&isptr==false);
 
            if(isptr==false){
    	     val1 = eval(p, op - 1);
