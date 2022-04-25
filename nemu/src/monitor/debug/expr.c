@@ -340,7 +340,11 @@ if (p > q) {
       case '+': return val1 + val2; break;
       case '-': return val1 - val2; break;
       case '*': return val1 * val2; break;
-      case '/': return val1 / val2; break;
+      case '/': if(val2!=0){
+			return val1 / val2; break;
+		}else{
+			assert(0);
+		}
       default: Log("invalid_expr");
 		assert(0); break;
     }
