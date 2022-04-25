@@ -345,7 +345,7 @@ if (p > q) {
 		    }
 			else if(tokens[i].type==TK_PTR){
 			int k=i+1;
-			while(k<q){
+			while(k<=q){
 				if(tokens[k].type==TK_LPAR){
 					int j=k+1;
         		                int l_depth=1;
@@ -382,7 +382,7 @@ if (p > q) {
 				}
 				k++;
 			}
-			long int addr=eval(1,1);
+			long int addr=eval(i+1,k-1);
 			Log("addr is%lx",addr);
 			return vaddr_read1(addr);
 			continue;
