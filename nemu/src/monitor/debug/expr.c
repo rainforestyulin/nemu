@@ -343,6 +343,7 @@ if (p > q) {
       case '/': if(val2!=0){
 			return val1 / val2; break;
 		}else{
+			panic("Wdiv 0 err!");
 			assert(0);
 		}
       default: Log("invalid_expr");
