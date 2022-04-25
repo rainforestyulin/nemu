@@ -223,7 +223,7 @@ long int get_num_val(int p){
 				 printf("-%c-",tokens[p].str[i]);
 				 i++;
                 	}
-			i=i-2;
+			i=i-3;
 			printf("i_%d",i);
                		for(int j=0;j<i;j++){
                         	int temp=1;
