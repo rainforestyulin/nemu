@@ -4,7 +4,6 @@
  * Type 'man regex' for more information about POSIX regex functions.
  */
 #include <regex.h>
-word_t vaddr_read1(vaddr_t addr);
 
 enum {
   TK_NOTYPE = 256, TK_EQ, TK_LPAR, TK_RPAR, TK_NUM, TK_R, TK_N_EQ, TK_AND, TK_PTR
@@ -315,7 +314,6 @@ if (p > q) {
 	  int op=-1;
 	  int op_type=-1;
      	  for (int i=p;i<q;i++){
-
      		if(tokens[i].type==TK_LPAR){
 			int j=i+1;
 			int l_depth=1;
@@ -341,8 +339,7 @@ if (p > q) {
 		}
 			else if(tokens[i].type==TK_NUM||tokens[i].type==TK_R){
 			continue;
-		    }
-			else if(tokens[i].type==TK_PTR){
+		}	else if(tokens[i].type==TK_PTR){
 			int k=i+1;
 			while(k<q){
 				if(tokens[k].type==TK_LPAR){
@@ -365,27 +362,23 @@ if (p > q) {
                                 		}
                         		}
                         	k=j;
-				            k++;
+				k++;
                         	Log("k==%d",k);
-							break;
+                        	continue;
 				}else if(tokens[k].type==TK_NUM||tokens[k].type==TK_R){
 					k++;
-					break;	
+					continue;	
 				}else {
-					assert(0);
 					//k_is the flag;
 					//long int temp=0;
-					Log("err");
+					Log("%d",k);
 					break;
 
 				}
-				k++;
 			}
-
-			return vaddr_read1(eval(i + 1, k - 1));
-			continue;
-			
-		  }
+			//return eval(p,)
+		}
+		
 			else if(tokens[i].type=='+'||tokens[i].type=='-'||tokens[i].type=='*'||tokens[i].type=='/'||tokens[i].type==TK_EQ||tokens[i].type==TK_N_EQ||tokens[i].type==TK_AND);
 		    {
 				int j=i+1;
@@ -436,7 +429,6 @@ if (p > q) {
 					break;
 				}
 			}
-			
      	}	  
     /* We should do more things here. */
     //op = the position of 主运算符 in the token expression;
