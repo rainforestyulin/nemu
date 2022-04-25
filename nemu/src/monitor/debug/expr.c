@@ -312,7 +312,8 @@ if (p > q) {
 	Log("legal");
     return eval(p + 1, q - 1);
   }
-  else {
+  else {  
+	  long int val=0;
 	  int op=-1;
 	  int op_type=-1;
      	  for (int i=p;i<q;i++){
@@ -384,7 +385,7 @@ if (p > q) {
 			}
 			long int addr=eval(i+1,k-1);
 			Log("addr is%lx",addr);
-			return vaddr_read1(addr);
+			val=vaddr_read1(addr);
 			continue;
 			
 		  }
@@ -449,11 +450,15 @@ if (p > q) {
              val2 = eval(op + 1, q);
   //}
     switch (op_type) {
-      case '+': return val1 + val2; break;
-      case '-': return val1 - val2; break;
-      case '*': return val1 * val2; break;
+      case '+': val=val1+val2;
+	      return val ; break;
+      case '-': val=val1-val2;
+		return val ; break;
+      case '*': val=val1*val2;
+		return val; break;
       case '/': if(val2!=0){
-			return val1 / val2; break;
+			val=val1/val2;
+			return val; break;
 		}else{
 			panic("Wdiv 0 err!");
 			assert(0);
