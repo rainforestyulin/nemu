@@ -20,7 +20,7 @@ static struct rule {
   /* TODO: Add more rules.
    * Pay attention to the precedence level of different rules.
    */
-  {"[0-9]?[0-9]+",TK_NUM},
+  {"[0-9]+[0-9]?",TK_NUM},
   {"0[xX][0-9a-fA-F]+",TK_NUM_X},
   {"\\(",TK_LPAR},
   {"\\)",TK_RPAR},
