@@ -238,7 +238,7 @@ if (p > q) {
      * For now this token should be a number.
      * Return the value of the number.
      */
-	  printf("got num\n");
+	//  printf("got num\n");
      return  get_num_val(p);	  
   }
   else if (check_parentheses(p, q) == true) {
