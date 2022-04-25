@@ -220,11 +220,11 @@ long int get_num_val(int p){
 			int i=0;
         	        long int val=0;
                		while(tokens[p].str[i]!='\0'){
-				 printf("-%c-",tokens[p].str[i]);
+			//	 printf("-%c-",tokens[p].str[i]);
 				 i++;
                 	}
 			i=i-2;
-			printf("i_%d",i);
+			//printf("i_%d",i);
                		for(int j=0;j<i;j++){
                         	int temp=1;
                         	for(int jj=i-j-1;jj>0;jj--){
@@ -233,7 +233,7 @@ long int get_num_val(int p){
                         	val=val+(tokens[p].str[j+2]-48)*temp;
 
                		}
-                	printf("val_%ld",val);
+                	//printf("val_%ld",val);
                 	return val;
 		}else{
 		int i=0;
