@@ -220,8 +220,8 @@ long int get_num_val(int p){
 			int i=0;
         	        long int val=0;
                		while(tokens[p].str[i]!='\0'){
-                		 i++;
 				 printf("-%c-",tokens[p].str[i]);
+				 i++;
                 	}
 			i=i-2;
 			printf("i_%d",i);
