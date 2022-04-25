@@ -230,7 +230,7 @@ long int get_num_val(int p){
                         	val=val+(tokens[p].str[j]-48)*temp;
 
                		}
-                	printf("xxxxx");
+                	printf("x_%ld",val);
                 	return val;
 		}else{
 		int i=0;
