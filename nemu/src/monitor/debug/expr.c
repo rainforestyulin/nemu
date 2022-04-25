@@ -146,6 +146,13 @@ static bool make_token(char *e) {
 			};
 			nr_token++;
 			break;
+		case TK_NUM_X:
+			tokens[nr_token].type=rules[i].token_type;
+			for(int j=0;j<substr_len-2;j++){
+				tokens[nr_token].str[j]=*(substr_start+j+2);
+			}
+			nr_token++;
+			break;
                default: 
 			TODO();
 			break;
