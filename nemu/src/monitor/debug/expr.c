@@ -6,7 +6,7 @@
 #include <regex.h>
 
 enum {
-  TK_NOTYPE = 256, TK_EQ, TK_LPAR, TK_RPAR, TK_NUM, TK_R, TK_N_EQ, TK_AND
+  TK_NOTYPE = 256, TK_EQ, TK_LPAR, TK_RPAR, TK_NUM, TK_R, TK_N_EQ, TK_AND, TK_PTR
 
   /* TODO: Add more token types */
 
@@ -127,10 +127,17 @@ static bool make_token(char *e) {
                         nr_token++;
                         break;
 		case '*':
-			tokens[nr_token].type=rules[i].token_type;
-                        tokens[nr_token].str[0]=*(substr_start);
-                        nr_token++;
-                        break;
+			if(nr_token==0||(tokens[nr_token-1].type!=TK_NUM&&tokens[nr_token-1].type!=TK_R)){
+				tokens[nr_token].type=TK_PTR;
+				tokens[nr_token].str[0]=*(substr_start);
+	                        nr_token++;
+				break;
+			}else{
+				tokens[nr_token].type=rules[i].token_type;
+                        	tokens[nr_token].str[0]=*(substr_start);
+                        	nr_token++;
+                        	break;
+			}
 		case '/':
 			tokens[nr_token].type=rules[i].token_type;
                         tokens[nr_token].str[0]=*(substr_start);
@@ -332,8 +339,43 @@ if (p > q) {
 		}
 			else if(tokens[i].type==TK_NUM||tokens[i].type==TK_R){
 			continue;
+		}	else if(tokens[i].type==TK_PTR){
+			int k=i+1;
+			while(k<q){
+				if(tokens[k].type==TK_LPAR){
+					int j=k+1;
+        		                int l_depth=1;
+	                	        while(l_depth>0){
+                                		if(tokens[j].type==TK_LPAR){
+                                        		l_depth++;
+                                       		 	j++;
+                               		 	}else if(tokens[j].type==TK_RPAR){
+                                        		l_depth--;
+                                       			if(l_depth==0){
+                                               			 break;
+                                        		}else{
+                                                		j++;
+                                       			}
+
+                                		}else{
+                                        		j++;
+                                		}
+                        		}
+                        	k=j;
+				k++;
+                        	Log("k==%d",k);
+                        	continue;
+				}else if(tokens[k].type==TK_NUM||tokens[k].type==TK_R){
+				
+				}else {
+					//long int temp=0;
+					Log("!!");
+
+				}
+			}
 		}
-			else if(tokens[i].type=='+'||tokens[i].type=='-'||tokens[i].type=='*'||tokens[i].type=='/'||tokens[i].type==TK_EQ||tokens[i].type==TK_N_EQ||tokens[i].type==TK_AND)
+		
+			else if(tokens[i].type=='+'||tokens[i].type=='-'||tokens[i].type=='*'||tokens[i].type=='/'||tokens[i].type==TK_EQ||tokens[i].type==TK_N_EQ||tokens[i].type==TK_AND);
 		    {
 				int j=i+1;
 				bool  isfind=false;
