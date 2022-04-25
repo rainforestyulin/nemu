@@ -343,7 +343,8 @@ if (p > q) {
       case '-': return val1 - val2; break;
       case '*': return val1 * val2; break;
       case '/': return val1 / val2; break;
-      default: assert(0); break;
+      default: Log("invalid_expr");
+		assert(0); break;
     }
   }
   return 0;
