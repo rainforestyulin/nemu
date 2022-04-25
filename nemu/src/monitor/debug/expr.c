@@ -141,9 +141,10 @@ static bool make_token(char *e) {
                default: 
 			TODO();
 			break;
-        Log("nr_buf_%d",nr_token);
+        //Log("nr_buf_%d",nr_token);
 	}
 
+	Log("nr_buf_%d",nr_token);
         break;
       }
     }
