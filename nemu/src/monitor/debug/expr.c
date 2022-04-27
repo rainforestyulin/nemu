@@ -362,7 +362,7 @@ if (p > q) {
 	}//trade as num
 */	
 	  long int val1=0,val2=0;  
-	  long int val=0;
+	  //long int val=0;
 	  int op=-1;
 	  int op_type=-1;
 	  bool isptr=false;
@@ -454,24 +454,24 @@ if (p > q) {
 				bool  isfind=false;
 				while(j<q){
 					if(tokens[j].type==TK_LPAR){
-                        	int jj=j+1;
-                        	int l_depth=1;
-                        	while(l_depth>0){
-                                	if(tokens[jj].type==TK_LPAR){
-                                        	l_depth++;
-                                        	jj++;
-                                	}else if(tokens[jj].type==TK_RPAR){
-                                       		 l_depth--;
-                                        	if(l_depth==0){
-                                                break;
-                                        	}else{
-                                                	jj++;
-                                        	}
+                       			 	int jj=j+1;
+                        			int l_depth=1;
+                        				while(l_depth>0){
+                                				if(tokens[jj].type==TK_LPAR){
+                                        				l_depth++;
+                                        				jj++;
+                                				}else if(tokens[jj].type==TK_RPAR){
+                                       		 			l_depth--;
+                                        				if(l_depth==0){
+                                                				break;
+                                        				}else{
+                                                				jj++;
+                                        				}
 
-                               		 }else{
-                                        	jj++;
-                                     }
-                       		 }
+								}else{
+                                        				jj++;
+                                     				}
+                       		 			}
 							j=jj+1;
 							continue;
 					}
@@ -502,30 +502,25 @@ if (p > q) {
      	}	  
     /* We should do more things here. */
     //op = the position of 主运算符 in the token expression;
-   // long int val1=0,val2=0;
-   // assert(op!=-1&&isptr==false);
+    // long int val1=0,val2=0;
+       assert(op!=-1&&isptr==false);
 
-           if(isptr==false){
+           
    	     val1 = eval(p, op - 1);
-             val2 = eval(op + 1, q);
-	   }else{
-		   if(op!=-1){
-		 Log("els truue%d",op);
-	   	val2=eval(op+1,q);
-		isptr=false;}else{
-			return val1;
-		}
-	   };
+      
     switch (op_type) {
-      case '+': val=val1+val2;
-	      return val ; break;
-      case '-': val=val1-val2;
-		return val ; break;
-      case '*': val=val1*val2;
-		return val; break;
-      case '/': if(val2!=0){
-			val=val1/val2;
-			return val; break;
+      case '+': return eval(p,op-1)+eval(op+1,q);break;
+	      /*val=val1+val2;
+	      return val ; break;*/
+      case '-': return eval(p,op-1)-eval(op+1,q);break;
+		/*val=val1-val2;
+		return val ; break;*/
+      case '*': return eval(p,op-1)-eval(op+1,q);break;
+		/*val=val1*val2;
+		return val; break;*/
+      case '/': if(eval(op+1,q)!=0){
+			//val=val1/val2;
+			return eval(p,op-1)/eval(op+1,q);break;
 		}else{
 			panic("Wdiv 0 err!");
 			assert(0);
