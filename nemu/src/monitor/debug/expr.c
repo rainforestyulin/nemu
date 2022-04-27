@@ -462,7 +462,7 @@ if (p > q) {
       case '-': return eval(p,op-1)-eval(op+1,q);break;
 		/*val=val1-val2;
 		return val ; break;*/
-      case '*': return eval(p,op-1)-eval(op+1,q);break;
+      case '*': return eval(p,op-1)*eval(op+1,q);break;
 		/*val=val1*val2;
 		return val; break;*/
       case '/': if(eval(op+1,q)!=0){
