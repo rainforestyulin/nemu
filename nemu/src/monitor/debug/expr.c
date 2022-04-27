@@ -313,7 +313,7 @@ if (p > q) {
     return eval(p + 1, q - 1);
   }
   else { 
-	if(tokens[p].type==TK_PTR){
+/*	if(tokens[p].type==TK_PTR){
 		int k=p+1;
                         while(k<=q){
                                 if(tokens[k].type==TK_LPAR){
@@ -360,7 +360,7 @@ if (p > q) {
                         long int val1= vaddr_read1(addr);
                       	return val1;}
 	}//trade as num
-	
+*/	
 	  long int val1=0,val2=0;  
 	  long int val=0;
 	  int op=-1;
@@ -394,7 +394,7 @@ if (p > q) {
 			else if(tokens[i].type==TK_NUM||tokens[i].type==TK_R){
 			continue;
 		    }
-			/*else if(tokens[i].type==TK_PTR){
+			else if(tokens[i].type==TK_PTR){
 			int k=i+1;
 			while(k<=q){
 				if(tokens[k].type==TK_LPAR){
@@ -437,11 +437,15 @@ if (p > q) {
 			Log("addr is%lx",addr);
 			val1= vaddr_read1(addr);
 			isptr=true;
-			i=k-1;
+			i=k;
 			Log("dadadadadad%d",i);
-			continue;
+			if(tokens[i].type=='-'){
+				continue;
+			}else {
+				return val1;	
+			}
 			
-		  }*/
+		  }
 			else if(tokens[i].type=='+'||tokens[i].type=='-'||tokens[i].type=='*'||tokens[i].type=='/'||tokens[i].type==TK_EQ||tokens[i].type==TK_N_EQ||tokens[i].type==TK_AND);
 		    {
 				int j=i+1;
