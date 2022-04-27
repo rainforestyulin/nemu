@@ -365,7 +365,7 @@ if (p > q) {
 	  //long int val=0;
 	  int op=-1;
 	  int op_type=-1;
-	  bool isptr=false;
+	  //bool isptr=false;
      	  for (int i=p;i<q;i++){
 
      		if(tokens[i].type==TK_LPAR){
@@ -436,7 +436,6 @@ if (p > q) {
 			long int addr=eval(i+1,k-1);
 			Log("addr is%lx",addr);
 			val1= vaddr_read1(addr);
-			isptr=true;
 			i=k;
 			Log("dadadadadad%d",i);
 			if(tokens[i].type=='-'){
@@ -503,7 +502,7 @@ if (p > q) {
     /* We should do more things here. */
     //op = the position of 主运算符 in the token expression;
     // long int val1=0,val2=0;
-       assert(op!=-1&&isptr==false);
+       assert(op!=-1);
 
            
    	     val1 = eval(p, op - 1);
