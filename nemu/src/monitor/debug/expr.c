@@ -437,7 +437,7 @@ if (p > q) {
 			Log("addr is%lx",addr);
 			val1= vaddr_read1(addr);
 			isptr=true;
-			i=k-1;
+			i=k;
 			Log("dadadadadad%d",i);
 			if(tokens[i].type=='-'){
 				continue;
