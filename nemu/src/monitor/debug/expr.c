@@ -446,7 +446,7 @@ if (p > q) {
 				return val1;	
 			}
 			
-		  }
+       		    }
 			else if(tokens[i].type=='+'||tokens[i].type=='-'||tokens[i].type=='*'||tokens[i].type=='/'||tokens[i].type==TK_EQ||tokens[i].type==TK_N_EQ||tokens[i].type==TK_AND);
 		    {		
 			    	Log("find -");
