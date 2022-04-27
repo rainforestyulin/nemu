@@ -390,7 +390,7 @@ if (p > q) {
 			i=j;
 			Log("i==%d",i);
 			continue;
-		}
+		    }
 			else if(tokens[i].type==TK_NUM||tokens[i].type==TK_R){
 			continue;
 		    }
@@ -440,6 +440,7 @@ if (p > q) {
 			i=k;
 			Log("dadadadadad%d",i);
 			if(tokens[i].type=='-'){
+				i--;
 				continue;
 			}else {
 				return val1;	
