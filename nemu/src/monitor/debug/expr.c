@@ -439,6 +439,7 @@ if (p > q) {
 			i=k;
 			Log("dadadadadad%d",i);
 			if(tokens[i].type=='-'){
+				Log("detetc");
 				i--;
 				continue;
 			}else {
@@ -505,7 +506,7 @@ if (p > q) {
        assert(op!=-1);
 
            
-   	     val1 = eval(p, op - 1);
+//   	     val1 = eval(p, op - 1);
       
     switch (op_type) {
       case '+': return eval(p,op-1)+eval(op+1,q);break;
