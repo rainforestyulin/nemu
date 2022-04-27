@@ -447,7 +447,8 @@ if (p > q) {
 			
 		  }
 			else if(tokens[i].type=='+'||tokens[i].type=='-'||tokens[i].type=='*'||tokens[i].type=='/'||tokens[i].type==TK_EQ||tokens[i].type==TK_N_EQ||tokens[i].type==TK_AND);
-		    {
+		    {		
+			    	Log("find -");
 				int j=i+1;
 				bool  isfind=false;
 				while(j<q){
