@@ -203,11 +203,9 @@ bool check_parentheses(int p,int  q){
 	bool res=true;
 	Log("in chech_%d_%d\n",p,q);
 	if(tokens[p].type==TK_LPAR&&tokens[q].type==TK_RPAR){
-	//	bool islegall=false;
 		int h_flag=p+1;
 		int t_flag=q-1;
-                int par_num=0;
-	//	int rec=0;
+		int par_num=0;
 		while(h_flag<=t_flag){
 			
 			if(tokens[h_flag].type==TK_LPAR){
@@ -296,6 +294,7 @@ long int get_num_val(int p){
 word_t eval(int p,int q){
 if (p > q) {
     /* Bad expression */
+	assert(-1);
   }
   else if (p == q) {
     /* Single token.
@@ -309,69 +308,19 @@ if (p > q) {
     /* The expression is surrounded by a matched pair of parentheses.
      * If that is the case, just throw away the parentheses.
      */
-	Log("legal");
+	Log("parenthese");
     return eval(p + 1, q - 1);
   }
   else { 
-/*	if(tokens[p].type==TK_PTR){
-		int k=p+1;
-                        while(k<=q){
-                                if(tokens[k].type==TK_LPAR){
-                                        int j=k+1;
-                                        int l_depth=1;
-                                        while(l_depth>0){
-                                                if(tokens[j].type==TK_LPAR){
-                                                        l_depth++;
-                                                        j++;
-                                                }else if(tokens[j].type==TK_RPAR){
-                                                        l_depth--;
-                                                        if(l_depth==0){
-                                                                break;
-                                                        }else{
-                                                                j++;
-                                                        }
-
-                                                }else{
-                                                        j++;
-                                                }
-                                        }
-                                	k=j;
-                                        k++;
-                                	Log("k==%d",k);
-                                        break;
-                                }else if(tokens[k].type==TK_NUM||tokens[k].type==TK_R){
-                                        k++;
-                                        break;
-                                }else {
-                                        assert(0);
-                                        //k_is the flag;
-                                        //long int temp=0;
-                                        Log("err");
-                                        break;
-
-                                }
-                                k++;
-                        }
-			if(tokens[k].type=='-'){
-				
-			}else{
-                        long int addr=eval(p+1,k-1);
-                        Log("addr is%lx",addr);
-                        long int val1= vaddr_read1(addr);
-                      	return val1;}
-	}//trade as num
-*/	
-	  long int val1=0,val2=0;  
-	  //long int val=0;
+	  long int val1=0;  
 	  int op=-1;
 	  int op_type=-1;
-	  //bool isptr=false;
-     	  for (int i=p;i<q;i++){
-
-     		if(tokens[i].type==TK_LPAR){
+		for (int i=p;i<q;i++){		//表达式分解
+     		if(tokens[i].type==TK_LPAR){	//若匹配到左括号，则找到其对应的右括号
 			int j=i+1;
 			int l_depth=1;
 			while(l_depth>0){
+				assert(j > q);              //bad expr
 				if(tokens[j].type==TK_LPAR){
 					l_depth++;
 					j++;
@@ -388,68 +337,64 @@ if (p > q) {
 				}
 			}
 			i=j;
-			Log("i==%d",i);
-			continue;
+			Log("index of )_%d",i);
+				continue;
 		    }
 			else if(tokens[i].type==TK_NUM||tokens[i].type==TK_R){
-			continue;
-		    }
-			else if(tokens[i].type==TK_PTR){
-			int k=i+1;
-			while(k<=q){
-				if(tokens[k].type==TK_LPAR){
-					int j=k+1;
-        		                int l_depth=1;
-	                	        while(l_depth>0){
-                                		if(tokens[j].type==TK_LPAR){
-                                        		l_depth++;
-                                       		 	j++;
-                               		 	}else if(tokens[j].type==TK_RPAR){
-                                        		l_depth--;
-                                       			if(l_depth==0){
-                                               			 break;
-                                        		}else{
-                                                		j++;
-                                       			}
-
-                                		}else{
-                                        		j++;
-                                		}
-                        		}
-                        	k=j;
-				            k++;
-                        	Log("k==%d",k);
-							break;
-				}else if(tokens[k].type==TK_NUM||tokens[k].type==TK_R){
-					k++;
-					break;	
-				}else {
-					assert(0);
-					//k_is the flag;
-					//long int temp=0;
-					Log("err");
-					break;
-
-				}
-				k++;
-			}
-			long int addr=eval(i+1,k-1);
-			Log("addr is%lx",addr);
-			val1= vaddr_read1(addr);
-			i=k;
-			Log("dadadadadad%d",i);
-			if(i<=q&&tokens[i].type=='-'){
-				Log("detetc");
-				i--;
 				continue;
-			}else {
-				return val1;	
-			}
+		    }
+			else if(tokens[i].type==TK_PTR){	
+				int k=i+1;
+				while(k<=q){
+					if(tokens[k].type==TK_LPAR){
+						int j=k+1;
+        				int l_depth=1;
+						while(l_depth>0){
+							if(tokens[j].type==TK_LPAR){
+								l_depth++;
+								j++;
+							}else if(tokens[j].type==TK_RPAR){
+								l_depth--;
+								if(l_depth==0){
+									break;
+								}else{
+									j++;
+								}
+							}else{
+								j++;
+							}
+						}
+						k=j;
+						k++;
+						Log("k==%d",k);
+						break;
+					}else if(tokens[k].type==TK_NUM||tokens[k].type==TK_R){
+						k++;
+						break;	
+					}else {
+						assert(0);
+						Log("err");
+						break;
+					}
+					k++;
+				}
+				long int addr=eval(i+1,k-1);
+				Log("addr is%lx",addr);
+				val1= vaddr_read1(addr);
+				i=k;
+				Log("ptr_end_%d",i);
+				if(i<=q&&tokens[i].type!=TK_R&&tokens[i].type!=TK_NUM&&tokens[i].type!=TK_LPAR&&tokens[i].type!=TK_RPAR&&tokens[i].type!=TK_PTR) {
+					Log("detetc");
+					i--;
+					continue;
+				}else {
+					return val1;	
+				}
 			
-       		    }
+       		}
 			else if(tokens[i].type=='+'||tokens[i].type=='-'||tokens[i].type=='*'||tokens[i].type=='/'||tokens[i].type==TK_EQ||tokens[i].type==TK_N_EQ||tokens[i].type==TK_AND);
 		    {		
-			    	Log("find -");
+			    Log("find another op");
 				int j=i+1;
 				bool  isfind=false;
 				while(j<q){
@@ -527,19 +472,19 @@ if (p > q) {
 			panic("Wdiv 0 err!");
 			assert(0);
 		}
-      case TK_EQ: if(val1==val2){
+      case TK_EQ: if(eval(p,op-1) == eval(op+1,q)) {
 		  	return 1;
 		  }else{
 		  	return 0;
 		  }
 		  break;
-      case TK_N_EQ: if(val1!=val2){
+      case TK_N_EQ: if(eval(p,op-1) != eval(op+1,q)) {
                  	 return 1;
                   }else{
                   	return 0;
                   }
                   break;
-      case TK_AND: if(val1*val2!=0){
+      case TK_AND: if(eval(p,op-1) * eval(op+1,q) != 0) {
 		   	return 1;
 		   }else{
 		   	return 0;
