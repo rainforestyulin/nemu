@@ -438,7 +438,7 @@ if (p > q) {
 			val1= vaddr_read1(addr);
 			i=k;
 			Log("dadadadadad%d",i);
-			if(tokens[i].type=='-'){
+			if(i<=q&&tokens[i].type=='-'){
 				Log("detetc");
 				i--;
 				continue;
