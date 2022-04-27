@@ -366,7 +366,7 @@ if (p > q) {
 						}
 						k=j;
 						k++;
-						Log("k==%d",k);
+						Log("k of ptr=%d",k);
 						break;
 					}else if(tokens[k].type==TK_NUM||tokens[k].type==TK_R){
 						k++;
