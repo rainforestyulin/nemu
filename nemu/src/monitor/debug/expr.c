@@ -476,6 +476,7 @@ if (p > q) {
 							continue;
 					}
 					else if (tokens[j].type == '+' || tokens[j].type == '-') {
+						Log("find another -");
 						isfind = true;
 						break;
 					}
@@ -493,6 +494,7 @@ if (p > q) {
 					i=j-1;
 					continue;
 				}else{
+					Log("last");
 					op=i;
 					op_type=tokens[i].type;
 					break;
