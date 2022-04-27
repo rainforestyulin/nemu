@@ -352,10 +352,13 @@ if (p > q) {
                                 }
                                 k++;
                         }
+			if(tokens[k].type=='-'){
+				
+			}else{
                         long int addr=eval(p+1,k-1);
                         Log("addr is%lx",addr);
                         long int val1= vaddr_read1(addr);
-                      	return val1;
+                      	return val1;}
 	}//trade as num
 	
 	  long int val1=0,val2=0;  
