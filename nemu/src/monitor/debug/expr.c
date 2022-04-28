@@ -129,7 +129,7 @@ static bool make_token(char *e) {
                         nr_token++;
                         break;
 		case '*':
-			if(nr_token==0||(tokens[nr_token-1].type!=TK_NUM&&tokens[nr_token-1].type!=TK_R)){
+			if(nr_token==0||(tokens[nr_token-1].type!=TK_NUM&&tokens[nr_token-1].type!=TK_R&&tokens[nr_token-1].type!=TK_RPAR)){
 				tokens[nr_token].type=TK_PTR;
 				tokens[nr_token].str[0]=*(substr_start);
 	                        nr_token++;
