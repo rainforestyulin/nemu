@@ -320,7 +320,7 @@ if (p > q) {
 			int j=i+1;
 			int l_depth=1;
 			while(l_depth>0){
-				assert(j > q);              //bad expr
+				//assert(j > q);              //bad expr
 				if(tokens[j].type==TK_LPAR){
 					l_depth++;
 					j++;
