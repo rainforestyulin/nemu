@@ -379,7 +379,7 @@ if (p > q) {
 				i=k;
 				Log("ptr_end_%d",i);
 				Log("q is%d",q);
-				if(i<q&&tokens[i+1].type!=TK_R&&tokens[i+1].type!=TK_NUM&&tokens[i+1].type!=TK_LPAR&&tokens[i+1].type!=TK_RPAR) {
+				if(i<q&&tokens[i+1].type!=TK_R&&tokens[i+1].type!=TK_NUM&&tokens[i+1].type!=TK_LPAR&&tokens[i+1].type!=TK_RPAR&&tokens[i+1].type!=TK_PTR) {
 					Log("detetc");
 					continue;
 				}else {
