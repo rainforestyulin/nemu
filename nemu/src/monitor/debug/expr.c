@@ -345,41 +345,35 @@ if (p > q) {
 		    }
 			else if(tokens[i].type==TK_PTR){	
 				int k=i+1;
-				assert(k<q);
-				while(k<q){
-					if(tokens[k].type==TK_LPAR){
-						int j=k+1;
-        					int l_depth=1;
-						while(l_depth>0){
-							if(tokens[j].type==TK_LPAR){
-								l_depth++;
-								j++;
-							}else if(tokens[j].type==TK_RPAR){
-								l_depth--;
-								if(l_depth==0){
-									break;
-								}else{
-									j++;
-								}
+				assert(k<=q);
+				if(tokens[k].type==TK_LPAR){
+					int j=k+1;
+        				int l_depth=1;
+					while(l_depth>0){
+						if(tokens[j].type==TK_LPAR){
+							l_depth++;
+							j++;
+						}else if(tokens[j].type==TK_RPAR){
+							l_depth--;
+							if(l_depth==0){
+								break;
 							}else{
 								j++;
 							}
+						}else{
+							j++;
 						}
-						k=j;
-						k++;
-						Log("k of (=%d",k);
-						break;
-					}else if(tokens[k].type==TK_NUM||tokens[k].type==TK_R){
-						k++;
-						break;	
-					}else {
-						assert(0);
-						Log("err");
-						break;
 					}
-					k++;
+					k=j;
+					Log("k of (=%d",k);
+				}else if(tokens[k].type==TK_NUM||tokens[k].type==TK_R){	
+					
+				}else {
+					assert(0);
+					Log("err");
 				}
-				long int addr=eval(i+1,k-1);
+				
+				long int addr=eval(i+1,k);
 				Log("addr is%lx",addr);
 				val1= vaddr_read1(addr);
 				i=k;
