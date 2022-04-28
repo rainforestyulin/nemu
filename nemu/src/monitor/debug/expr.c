@@ -283,7 +283,7 @@ long int get_num_val(int p){
 		bool issuccess=false;
 		val=isa_reg_str2val(tokens[p].str,&issuccess);
 		if(issuccess==true){
-		printf("%ld\t %lx\n",val,val);
+		//printf("%ld\t %lx\n",val,val);
 		return val;}
 	}else{
 		printf("invalid_expr\n");
@@ -320,7 +320,7 @@ if (p > q) {
 			int j=i+1;
 			int l_depth=1;
 			while(l_depth>0){
-				//assert(j > q);              //bad expr
+				assert(j <= q);              //bad expr
 				if(tokens[j].type==TK_LPAR){
 					l_depth++;
 					j++;
