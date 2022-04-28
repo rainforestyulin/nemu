@@ -349,7 +349,7 @@ if (p > q) {
 				if(tokens[k].type==TK_LPAR){
 					int j=k+1;
         				int l_depth=1;
-					while(l_depth>0){
+					while(l_depth>0&&j<=q){
 						if(tokens[j].type==TK_LPAR){
 							l_depth++;
 							j++;
