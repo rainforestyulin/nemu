@@ -388,6 +388,7 @@ if (p > q) {
 					i--;
 					continue;
 				}else {
+					Log("return ptr");
 					return val1;	
 				}
 			
