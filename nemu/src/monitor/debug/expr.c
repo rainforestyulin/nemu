@@ -378,9 +378,8 @@ if (p > q) {
 				val1= vaddr_read1(addr);
 				i=k;
 				Log("ptr_end_%d",i);
-				if(i<=q&&tokens[i].type!=TK_R&&tokens[i].type!=TK_NUM&&tokens[i].type!=TK_LPAR&&tokens[i].type!=TK_RPAR&&tokens[i].type!=TK_PTR) {
+				if(i<q&&tokens[i+1].type!=TK_R&&tokens[i+1].type!=TK_NUM&&tokens[i+1].type!=TK_LPAR&&tokens[i+1].type!=TK_RPAR&&tokens[i+1].type!=TK_PTR) {
 					Log("detetc");
-					i--;
 					continue;
 				}else {
 					Log("return ptr");
