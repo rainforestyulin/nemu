@@ -345,7 +345,8 @@ if (p > q) {
 		    }
 			else if(tokens[i].type==TK_PTR){	
 				int k=i+1;
-				while(k<=q){
+				assert(k<q);
+				while(k<q){
 					if(tokens[k].type==TK_LPAR){
 						int j=k+1;
         					int l_depth=1;
@@ -366,7 +367,7 @@ if (p > q) {
 						}
 						k=j;
 						k++;
-						Log("k of ptr=%d",k);
+						Log("k of (=%d",k);
 						break;
 					}else if(tokens[k].type==TK_NUM||tokens[k].type==TK_R){
 						k++;
