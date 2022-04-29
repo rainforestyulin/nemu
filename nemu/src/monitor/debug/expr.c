@@ -646,6 +646,7 @@ if (p > q) {
                                                         op_type=tokens[op].type;
                                                 };
 					}
+				Log("detemted op%c",op_type);
 			//	int l_op_index=-1;
 			//	if(tokens[i].type=='*'||tokens[i].type=='/')
 				/*int j=i+1;
