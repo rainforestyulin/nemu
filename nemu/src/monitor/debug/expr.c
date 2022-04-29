@@ -573,19 +573,79 @@ if (p > q) {
 		    	    	op=i;
 				op_type=tokens[i].type;
 			    	Log("find op %c",tokens[i].type);
-				if(find_op_and(i+1,q)!=-1){
-					op=find_op_and(i+1,q);
-					op_type=tokens[op].type;
-				}else if(find_op_eq(i+1,q)!=-1){
-					op=find_op_eq(i+1,q);
-					op_type=tokens[op].type;
-				}else if(find_op_plus(i+1,q)!=-1){
-					op=find_op_plus(i+1,q);
-					op_type=tokens[op].type;
-				}else if(find_op_mul(i+1,q)!=-1){
-					op=find_op_plus(i+1,q);
-					op_type=tokens[op].type;
-				}
+				switch (op_type){
+					case TK_AND:
+						if(find_op_and(i+1,q)!=-1){
+                                        		op=find_op_and(i+1,q);
+                                        		op_type=tokens[op].type;
+                                		};
+					case TK_EQ:
+						if(find_op_and(i+1,q)!=-1){
+                                        		op=find_op_and(i+1,q);
+                                        		op_type=tokens[op].type;
+                                		}else if(find_op_eq(i+1,q)!=-1){
+                                        		op=find_op_eq(i+1,q);
+                                        		op_type=tokens[op].type;
+                                		};
+					case TK_N_EQ:
+                                                if(find_op_and(i+1,q)!=-1){
+                                                        op=find_op_and(i+1,q);
+                                                        op_type=tokens[op].type;
+                                                }else if(find_op_eq(i+1,q)!=-1){
+                                                        op=find_op_eq(i+1,q);
+                                                        op_type=tokens[op].type;
+                                                };
+					case '+':
+						if(find_op_and(i+1,q)!=-1){
+                                                        op=find_op_and(i+1,q);
+                                                        op_type=tokens[op].type;
+                                                }else if(find_op_eq(i+1,q)!=-1){
+                                                        op=find_op_eq(i+1,q);
+                                                        op_type=tokens[op].type;
+                                                }else if(find_op_plus(i+1,q)!=-1){
+                                       			op=find_op_plus(i+1,q);
+                                        		op_type=tokens[op].type;
+                                		};
+					case '-':
+                                                if(find_op_and(i+1,q)!=-1){
+                                                        op=find_op_and(i+1,q);
+                                                        op_type=tokens[op].type;
+                                                }else if(find_op_eq(i+1,q)!=-1){
+                                                        op=find_op_eq(i+1,q);
+                                                        op_type=tokens[op].type;
+                                                }else if(find_op_plus(i+1,q)!=-1){
+                                                        op=find_op_plus(i+1,q);
+                                                        op_type=tokens[op].type;
+                                                };
+					case '*':
+						if(find_op_and(i+1,q)!=-1){
+                                                        op=find_op_and(i+1,q);
+                                                        op_type=tokens[op].type;
+                                                }else if(find_op_eq(i+1,q)!=-1){
+                                                        op=find_op_eq(i+1,q);
+                                                        op_type=tokens[op].type;
+                                                }else if(find_op_plus(i+1,q)!=-1){
+                                                        op=find_op_plus(i+1,q);
+                                                        op_type=tokens[op].type;
+                                                }else if(find_op_mul(i+1,q)!=-1){
+                                        		op=find_op_plus(i+1,q);
+                                        		op_type=tokens[op].type;
+                                		};
+					case '/':
+                                                if(find_op_and(i+1,q)!=-1){
+                                                        op=find_op_and(i+1,q);
+                                                        op_type=tokens[op].type;
+                                                }else if(find_op_eq(i+1,q)!=-1){
+                                                        op=find_op_eq(i+1,q);
+                                                        op_type=tokens[op].type;
+                                                }else if(find_op_plus(i+1,q)!=-1){
+                                                        op=find_op_plus(i+1,q);
+                                                        op_type=tokens[op].type;
+                                                }else if(find_op_mul(i+1,q)!=-1){
+                                                        op=find_op_plus(i+1,q);
+                                                        op_type=tokens[op].type;
+                                                };
+					}
 			//	int l_op_index=-1;
 			//	if(tokens[i].type=='*'||tokens[i].type=='/')
 				/*int j=i+1;
