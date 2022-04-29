@@ -583,7 +583,7 @@ if (p > q) {
 		    {	
 		    	    	op=i;
 				op_type=tokens[i].type;
-			    	Log("find op %c",tokens[i].type);
+			    	Log("find real op %c",tokens[i].type);
 				switch (op_type){
 					case TK_AND:
 						if(find_op_and(i+1,q)!=-1){
@@ -597,7 +597,7 @@ if (p > q) {
                                 		}else if(find_op_eq(i+1,q)!=-1){
                                         		op=find_op_eq(i+1,q);
                                         		op_type=tokens[op].type;
-                                		};
+                                		};break;
 					case TK_N_EQ:
                                                 if(find_op_and(i+1,q)!=-1){
                                                         op=find_op_and(i+1,q);
@@ -605,7 +605,7 @@ if (p > q) {
                                                 }else if(find_op_eq(i+1,q)!=-1){
                                                         op=find_op_eq(i+1,q);
                                                         op_type=tokens[op].type;
-                                                };
+                                                };break;
 					case '+':
 						if(find_op_and(i+1,q)!=-1){
                                                         op=find_op_and(i+1,q);
@@ -616,7 +616,7 @@ if (p > q) {
                                                 }else if(find_op_plus(i+1,q)!=-1){
                                        			op=find_op_plus(i+1,q);
                                         		op_type=tokens[op].type;
-                                		};
+                                		};break;
 					case '-':
                                                 if(find_op_and(i+1,q)!=-1){
                                                         op=find_op_and(i+1,q);
