@@ -295,7 +295,7 @@ long int get_num_val(int p){
 int find_op_and(int p,int q){
 	bool isfind=false;
 	int i=p;
-	int index=0;
+	int index=-1;
 	while(i<=q){
 		int k=i;
                 assert(k<=q);
@@ -331,9 +331,11 @@ int find_op_and(int p,int q){
 		}
 	}
 	if(isfind==true){
+		Log("find op and %d",index);
 		return index;
 	}else{
-		return -1;
+		Log("find op and %d",index);
+		return index;
 	}
 }
 int find_op_eq(int p,int q){
@@ -376,15 +378,18 @@ int find_op_eq(int p,int q){
 		}
 	}
 	if(isfind==true){
+		Log("find op eq%d",index);
                 return index;
         }else{
-                return -1;
-        }
+		Log("find op eq%d",index);
+                return index;
+        };
+	Log("find op eq%d",index);
 }
 int find_op_plus(int p,int q){
         bool isfind=false;
         int i=p;
-        int index=0;
+        int index=-1;
         while(i<=q){
 		int k=i;
                 assert(k<=q);
@@ -420,15 +425,18 @@ int find_op_plus(int p,int q){
                 }
         }
         if(isfind==true){
+		Log("find plus %d",index);
                 return index;
         }else{
-                return -1;
+		Log("find plus %d",index);
+                return index;
         }
+	Log("find plus %d",index);
 }
 int find_op_mul(int p,int q){
         bool isfind=false;
         int i=p;
-        int index=0;
+        int index=-1;
         while(i<=q){
 		int k=i;
                 assert(k<=q);
@@ -464,10 +472,13 @@ int find_op_mul(int p,int q){
                 }
         }
         if(isfind==true){
+		Log("find * / result %d",index);
                 return index;
         }else{
-                return -1;
+		Log("find * / result %d",index);
+                return index;
         }
+	Log("find * / result %d",index);
 }
 
 
