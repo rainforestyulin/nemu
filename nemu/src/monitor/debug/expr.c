@@ -291,6 +291,186 @@ long int get_num_val(int p){
 	return 0;
 }
 
+
+int find_op_and(int p,int q){
+	bool isfind=false;
+	int i=p;
+	int index=0;
+	while(i<=q){
+		int k=i+1;
+                assert(k<=q);
+                if(tokens[k].type==TK_LPAR){
+                	int j=k+1;
+                        int l_depth=1;
+                        while(l_depth>0&&j<=q){
+                        	if(tokens[j].type==TK_LPAR){
+                                	l_depth++;
+                                        j++;
+                                 }else if(tokens[j].type==TK_RPAR){
+                                 	l_depth--;
+                                        if(l_depth==0){
+                                        	break;
+                                        }else{
+                                                j++;
+                                        }
+                                 }else{
+                                                j++;
+                                        }
+                         }
+                         	i=j;
+				Log("i of (=%d",k);
+				continue;
+                                Log("i of (=%d",k);
+		}
+		else if(tokens[i].type==TK_AND){
+			index=i;
+			isfind=true;
+			i++;
+		}else{
+			i++;
+		}
+	}
+	if(isfind==true){
+		return index;
+	}else{
+		return -1;
+	}
+}
+int find_op_eq(int p,int q){
+	bool isfind=false;
+	int i=p;
+	int index=0;
+	while(i<=q){
+		int k=i+1;
+                assert(k<=q);
+                if(tokens[k].type==TK_LPAR){
+                        int j=k+1;
+                        int l_depth=1;
+                        while(l_depth>0&&j<=q){
+                                if(tokens[j].type==TK_LPAR){
+                                        l_depth++;
+                                        j++;
+                                 }else if(tokens[j].type==TK_RPAR){
+                                        l_depth--;
+                                        if(l_depth==0){
+                                                break;
+                                        }else{
+                                                j++;
+                                        }
+                                 }else{
+                                                j++;
+                                        }
+                         }
+                                i=j;
+                                Log("i of (=%d",k);
+                                continue;
+                                Log("i of (=%d",k);
+                }
+
+		else	if(tokens[i].type==TK_EQ||tokens[i].type==TK_N_EQ){
+			index=i;
+			isfind=true;
+			i++;
+		}else{
+			i++;
+		}
+	}
+	if(isfind==true){
+                return index;
+        }else{
+                return -1;
+        }
+}
+int find_op_plus(int p,int q){
+        bool isfind=false;
+        int i=p;
+        int index=0;
+        while(i<=q){
+		int k=i+1;
+                assert(k<=q);
+                if(tokens[k].type==TK_LPAR){
+                        int j=k+1;
+                        int l_depth=1;
+                        while(l_depth>0&&j<=q){
+                                if(tokens[j].type==TK_LPAR){
+                                        l_depth++;
+                                        j++;
+                                 }else if(tokens[j].type==TK_RPAR){
+                                        l_depth--;
+                                        if(l_depth==0){
+                                                break;
+                                        }else{
+                                                j++;
+                                        }
+                                 }else{
+                                                j++;
+                                        }
+                         }
+                                i=j;
+                                Log("i of (=%d",k);
+                                continue;
+                                Log("i of (=%d",k);
+                }
+		else    if(tokens[i].type=='+'||tokens[i].type=='-'){
+                        index=i;
+                        isfind=true;
+                        i++;
+                }else{
+                        i++;
+                }
+        }
+        if(isfind==true){
+                return index;
+        }else{
+                return -1;
+        }
+}
+int find_op_mul(int p,int q){
+        bool isfind=false;
+        int i=p;
+        int index=0;
+        while(i<=q){
+		int k=i+1;
+                assert(k<=q);
+                if(tokens[k].type==TK_LPAR){
+                        int j=k+1;
+                        int l_depth=1;
+                        while(l_depth>0&&j<=q){
+                                if(tokens[j].type==TK_LPAR){
+                                        l_depth++;
+                                        j++;
+                                 }else if(tokens[j].type==TK_RPAR){
+                                        l_depth--;
+                                        if(l_depth==0){
+                                                break;
+                                        }else{
+                                                j++;
+                                        }
+                                 }else{
+                                                j++;
+                                        }
+                         }
+                                i=j;
+                                Log("i of (=%d",k);
+                                continue;
+                                Log("i of (=%d",k);
+                }
+		else   if(tokens[i].type=='*'||tokens[i].type=='/'){
+                        index=i;
+                        isfind=true;
+                        i++;
+                }else{
+                        i++;
+                }
+        }
+        if(isfind==true){
+                return index;
+        }else{
+                return -1;
+        }
+}
+
+
 word_t eval(int p,int q){
 if (p > q) {
     /* Bad expression */
@@ -390,8 +570,23 @@ if (p > q) {
        		}
 			else if(tokens[i].type=='+'||tokens[i].type=='-'||tokens[i].type=='*'||tokens[i].type=='/'||tokens[i].type==TK_EQ||tokens[i].type==TK_N_EQ||tokens[i].type==TK_AND);
 		    {		
-			    Log("find op %c",tokens[i].type);
-				int j=i+1;
+			    	Log("find op %c",tokens[i].type);
+				if(find_op_and(i+1,q)!=-1){
+					op=find_op_and(i+1,q);
+					op_type=tokens[op].type;
+				}else if(find_op_eq(i+1,q)!=-1){
+					op=find_op_eq(i+1,q);
+					op_type=tokens[op].type;
+				}else if(find_op_plus(i+1,q)!=-1){
+					op=find_op_plus(i+1,q);
+					op_type=tokens[op].type;
+				}else if(find_op_mul(i+1,q)!=-1){
+					op=find_op_plus(i+1,q);
+					op_type=tokens[op].type;
+				}
+			//	int l_op_index=-1;
+			//	if(tokens[i].type=='*'||tokens[i].type=='/')
+				/*int j=i+1;
 				bool  isfind=false;
 				while(j<q){
 					if(tokens[j].type==TK_LPAR){
@@ -417,9 +612,10 @@ if (p > q) {
 							continue;
 					}
 					else if (tokens[j].type == '+' || tokens[j].type == '-') {
-						Log("find another -");
+					//	l_op_index=j;
+						Log("find another op%c",tokens[j].type);
 						isfind = true;
-						break;
+						continue;
 					}
 					else 
 					{
@@ -439,7 +635,7 @@ if (p > q) {
 					op=i;
 					op_type=tokens[i].type;
 					break;
-				}
+				}*/
 			}
 			
      	}	  
