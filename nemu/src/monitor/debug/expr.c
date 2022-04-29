@@ -297,7 +297,7 @@ int find_op_and(int p,int q){
 	int i=p;
 	int index=0;
 	while(i<=q){
-		int k=i+1;
+		int k=i;
                 assert(k<=q);
                 if(tokens[k].type==TK_LPAR){
                 	int j=k+1;
@@ -341,7 +341,7 @@ int find_op_eq(int p,int q){
 	int i=p;
 	int index=0;
 	while(i<=q){
-		int k=i+1;
+		int k=i;
                 assert(k<=q);
                 if(tokens[k].type==TK_LPAR){
                         int j=k+1;
@@ -386,7 +386,7 @@ int find_op_plus(int p,int q){
         int i=p;
         int index=0;
         while(i<=q){
-		int k=i+1;
+		int k=i;
                 assert(k<=q);
                 if(tokens[k].type==TK_LPAR){
                         int j=k+1;
@@ -430,7 +430,7 @@ int find_op_mul(int p,int q){
         int i=p;
         int index=0;
         while(i<=q){
-		int k=i+1;
+		int k=i;
                 assert(k<=q);
                 if(tokens[k].type==TK_LPAR){
                         int j=k+1;
