@@ -341,7 +341,7 @@ int find_op_and(int p,int q){
 int find_op_eq(int p,int q){
 	bool isfind=false;
 	int i=p;
-	int index=0;
+	int index=-1;
 	while(i<=q){
 		int k=i;
                 assert(k<=q);
