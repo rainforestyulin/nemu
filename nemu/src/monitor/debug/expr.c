@@ -589,7 +589,7 @@ if (p > q) {
 						if(find_op_and(i+1,q)!=-1){
                                         		op=find_op_and(i+1,q);
                                         		op_type=tokens[op].type;
-                                		};
+                                		};break;
 					case TK_EQ:
 						if(find_op_and(i+1,q)!=-1){
                                         		op=find_op_and(i+1,q);
@@ -627,7 +627,7 @@ if (p > q) {
                                                 }else if(find_op_plus(i+1,q)!=-1){
                                                         op=find_op_plus(i+1,q);
                                                         op_type=tokens[op].type;
-                                                };
+                                                };break;
 					case '*':
 						if(find_op_and(i+1,q)!=-1){
                                                         op=find_op_and(i+1,q);
@@ -641,7 +641,7 @@ if (p > q) {
                                                 }else if(find_op_mul(i+1,q)!=-1){
                                         		op=find_op_plus(i+1,q);
                                         		op_type=tokens[op].type;
-                                		};
+                                		};break;
 					case '/':
                                                 if(find_op_and(i+1,q)!=-1){
                                                         op=find_op_and(i+1,q);
@@ -655,7 +655,7 @@ if (p > q) {
                                                 }else if(find_op_mul(i+1,q)!=-1){
                                                         op=find_op_plus(i+1,q);
                                                         op_type=tokens[op].type;
-                                                };
+                                                };break;
 					}
 				Log("detemted op%d",op);
 			//	int l_op_index=-1;
