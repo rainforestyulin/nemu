@@ -569,7 +569,9 @@ if (p > q) {
 			
        		}
 			else if(tokens[i].type=='+'||tokens[i].type=='-'||tokens[i].type=='*'||tokens[i].type=='/'||tokens[i].type==TK_EQ||tokens[i].type==TK_N_EQ||tokens[i].type==TK_AND);
-		    {		
+		    {	
+		    	    	op=i;
+				op_type=tokens[i].type;
 			    	Log("find op %c",tokens[i].type);
 				if(find_op_and(i+1,q)!=-1){
 					op=find_op_and(i+1,q);
