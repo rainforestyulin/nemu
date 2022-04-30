@@ -295,9 +295,7 @@ int find_op_and(int p,int q){
                                         }
                          }
                          	i=j;
-				Log("i of (=%d",k);
 				continue;
-                                Log("i of (=%d",k);
 		}
 		else if(tokens[i].type==TK_AND){
 			index=i;
@@ -341,9 +339,7 @@ int find_op_eq(int p,int q){
                                         }
                          }
                                 i=j;
-                                Log("i of (=%d",k);
                                 continue;
-                                Log("i of (=%d",k);
                 }
 
 		else	if(tokens[i].type==TK_EQ||tokens[i].type==TK_N_EQ){
@@ -389,9 +385,9 @@ int find_op_plus(int p,int q){
                                         }
                          }
                                 i=j;
-                                Log("i of (=%d",k);
+                                //Log("i of (=%d",k);
                                 continue;
-                                Log("i of (=%d",k);
+                                //Log("i of (=%d",k);
                 }
 		else    if(tokens[i].type=='+'||tokens[i].type=='-'){
                         index=i;
@@ -436,9 +432,9 @@ int find_op_mul(int p,int q){
                                         }
                          }
                                 i=j;
-                                Log("i of (=%d",k);
+                                //Log("i of (=%d",k);
                                 continue;
-                                Log("i of (=%d",k);
+                                //Log("i of (=%d",k);
                 }
 		else   if(tokens[i].type=='*'||tokens[i].type=='/'){
                         index=i;
@@ -476,7 +472,7 @@ if (p > q) {
     /* The expression is surrounded by a matched pair of parentheses.
      * If that is the case, just throw away the parentheses.
      */
-	Log("parenthese");
+	Log("parenthesed");
     return eval(p + 1, q - 1);
   }
   else { 
@@ -484,33 +480,33 @@ if (p > q) {
 	  int op=-1;
 	  int op_type=-1;
 		for (int i=p;i<q;i++){		//表达式分解
-     		if(tokens[i].type==TK_LPAR){	//若匹配到左括号，则找到其对应的右括号
-			int j=i+1;
-			int l_depth=1;
-			while(l_depth>0){
-				assert(j <= q);              //bad expr
-				if(tokens[j].type==TK_LPAR){
-					l_depth++;
-					j++;
-				}else if(tokens[j].type==TK_RPAR){
-					l_depth--;
-					if(l_depth==0){
-						break;
+     			if(tokens[i].type==TK_LPAR){	//若匹配到左括号，则找到其对应的右括号
+				int j=i+1;
+				int l_depth=1;
+				while(l_depth>0){
+					assert(j <= q);              //bad expr
+					if(tokens[j].type==TK_LPAR){
+						l_depth++;
+						j++;
+					}else if(tokens[j].type==TK_RPAR){
+						l_depth--;
+						if(l_depth==0){
+							break;
+						}else{
+							j++;
+						}
+
 					}else{
 						j++;
 					}
-
-				}else{
-					j++;
 				}
-			}
-			i=j;
-			Log("index of )_%d",i);
+				i=j;
+				Log("index of )_%d",i);
 				continue;
-		    }
+		   	}
 			else if(tokens[i].type==TK_NUM||tokens[i].type==TK_R){
 				continue;
-		    }
+		    	}
 			else if(tokens[i].type==TK_PTR){	
 				int k=i+1;
 				assert(k<=q);
@@ -546,7 +542,7 @@ if (p > q) {
 				val1= vaddr_read1(addr);
 				i=k;
 				Log("ptr_end_%d",i);
-				Log("q is%d",q);
+				//Log("q is%d",q);
 				if(i<q&&tokens[i+1].type!=TK_R&&tokens[i+1].type!=TK_NUM&&tokens[i+1].type!=TK_LPAR&&tokens[i+1].type!=TK_RPAR&&tokens[i+1].type!=TK_PTR) {
 					Log("detetc");
 					continue;
@@ -555,7 +551,7 @@ if (p > q) {
 					return val1;	
 				}
 			
-       		}
+		    }
 			else if(tokens[i].type=='+'||tokens[i].type=='-'||tokens[i].type=='*'||tokens[i].type=='/'||tokens[i].type==TK_EQ||tokens[i].type==TK_N_EQ||tokens[i].type==TK_AND);
 		    {	
 		    	    	op=i;
@@ -634,118 +630,41 @@ if (p > q) {
                                                         op_type=tokens[op].type;
                                                 };break;
 					}
-				Log("switch detemted op%d",op);
-			//	int l_op_index=-1;
-			//	if(tokens[i].type=='*'||tokens[i].type=='/')
-				/*int j=i+1;
-				bool  isfind=false;
-				while(j<q){
-					if(tokens[j].type==TK_LPAR){
-                       			 	int jj=j+1;
-                        			int l_depth=1;
-                        				while(l_depth>0){
-                                				if(tokens[jj].type==TK_LPAR){
-                                        				l_depth++;
-                                        				jj++;
-                                				}else if(tokens[jj].type==TK_RPAR){
-                                       		 			l_depth--;
-                                        				if(l_depth==0){
-                                                				break;
-                                        				}else{
-                                                				jj++;
-                                        				}
-
-								}else{
-                                        				jj++;
-                                     				}
-                       		 			}
-							j=jj+1;
-							continue;
-					}
-					else if (tokens[j].type == '+' || tokens[j].type == '-') {
-					//	l_op_index=j;
-						Log("find another op%c",tokens[j].type);
-						isfind = true;
-						continue;
-					}
-					else 
-					{
-						j++;
-					}
-					
-
-			////
-			    }
-			
-			
-				if(isfind){
-					i=j-1;
-					continue;
-				}else{
-					Log("last");
-					op=i;
-					op_type=tokens[i].type;
-					break;
-				}*/
 			}
 		    Log("detemied op%d_____%c",op,tokens[op].type);
-    /* We should do more things here. */
-    //op = the position of 主运算符 in the token expression;
-    // long int val1=0,val2=0;
-       assert(op!=-1);
-
-
+ 		    assert(op!=-1);
 		    switch (op_type) {
-      case '+': return eval(p,op-1)+eval(op+1,q);break;
-              /*val=val1+val2;
-              return val ; break;*/
-      case '-': return eval(p,op-1)-eval(op+1,q);break;
-                /*val=val1-val2;
-                return val ; break;*/
-      case '*': return eval(p,op-1)*eval(op+1,q);break;
-                /*val=val1*val2;
-                return val; break;*/
-      case '/': if(eval(op+1,q)!=0){
-                        //val=val1/val2;
-                        return eval(p,op-1)/eval(op+1,q);break;
-                }else{
-                        panic("Wdiv 0 err!");
-                        assert(0);
-                }
-      case TK_EQ: if(eval(p,op-1) == eval(op+1,q)) {
-                        return 1;
-                  }else{
-                        return 0;
-                  }
-                  break;
-      case TK_N_EQ: if(eval(p,op-1) != eval(op+1,q)) {
-                         return 1;
-                  }else{
-                        return 0;
-                  }
-                  break;
-      case TK_AND: if(eval(p,op-1) * eval(op+1,q) != 0) {
-                        return 1;
-                   }else{
-                        return 0;
-                   }
-                  break;
-      default: Log("invalid_expr");
-                assert(0); break;
-    }
-
-			
+      		    	case '+': return eval(p,op-1)+eval(op+1,q);break;    
+      			case '-': return eval(p,op-1)-eval(op+1,q);break;
+      			case '*': return eval(p,op-1)*eval(op+1,q);break;
+      			case '/': if(eval(op+1,q)!=0){
+                        	return eval(p,op-1)/eval(op+1,q);break;
+                	}else{
+                        	panic("Wdiv 0 err!");
+                        	assert(0);
+                	}
+      			case TK_EQ: if(eval(p,op-1) == eval(op+1,q)) {
+                        	return 1;
+                  	}else{
+                        	return 0;
+                  	}
+                  	break;
+      			case TK_N_EQ: if(eval(p,op-1) != eval(op+1,q)) {
+                        	return 1;
+                  	}else{
+                        	return 0;
+                  	}
+                  	break;
+      			case TK_AND: if(eval(p,op-1) * eval(op+1,q) != 0) {
+                        	return 1;
+                   	}else{
+                        	return 0;
+                   	}
+                  	break;
+      			default: Log("invalid_expr");
+                	assert(0); break;
+    	       	}		
      	}
-  //    Log("detemied op%d_____%c",op,tokens[op].type);		
-    /* We should do more things here. */
-    //op = the position of 主运算符 in the token expression;
-    // long int val1=0,val2=0;
-//       assert(op!=-1);
-
-           
-//   	     val1 = eval(p, op - 1);
-      
-
   }
   return 0;
 }
@@ -758,7 +677,6 @@ word_t expr(char *e, bool *success) {
   Log("--%d--",nr_token-1);
   long int a=eval(0,nr_token-1);
   printf("%ld\t0x%lx\n",a,a);
- // eval(0,nr_token-1);
   /* TODO: Insert codes to evaluate the expression. */
 //  TODO();
 
