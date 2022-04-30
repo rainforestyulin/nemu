@@ -549,8 +549,8 @@ if (p > q) {
 					i=k;
 					Log("ptr_end_%d",i);
 				}else{
-					val1=-eval(i+1,k);
-					Log("neg_val%ld",val1);
+					val1=eval(i+1,k);
+					Log("neg_val1%ld",val1);
 					i=k;
 					Log("neg_end%d",i);
 				}
