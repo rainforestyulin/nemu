@@ -712,7 +712,8 @@ if (p > q) {
 				}*/
 			}
 			
-     	}	  
+     	}
+      Log("detemied op_____%c",tokens[op].type);		
     /* We should do more things here. */
     //op = the position of 主运算符 in the token expression;
     // long int val1=0,val2=0;
