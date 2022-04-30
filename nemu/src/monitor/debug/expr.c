@@ -461,7 +461,7 @@ int find_op_mul(int p,int q){
 }
 
 
-word_t eval(int p,int q){
+unsigned long int eval(int p,int q){
 if (p > q) {
     /* Bad expression */
 	assert(-1);
