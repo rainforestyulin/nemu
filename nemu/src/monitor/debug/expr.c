@@ -8,7 +8,7 @@ word_t vaddr_read1(vaddr_t addr);
 
 
 enum {
-  TK_NOTYPE = 256, TK_EQ, TK_LPAR, TK_RPAR, TK_NUM, TK_R, TK_N_EQ, TK_AND, TK_PTR
+  TK_NOTYPE = 256, TK_EQ, TK_LPAR, TK_RPAR, TK_NUM, TK_R, TK_N_EQ, TK_AND, TK_PTR, TK_NEG_NUM
 
   /* TODO: Add more token types */
 
@@ -121,9 +121,15 @@ static bool make_token(char *e) {
                         nr_token++;
                         break;
 		case '-':
-			tokens[nr_token].type=rules[i].token_type;
-                        tokens[nr_token].str[0]=*(substr_start);
-                        nr_token++;
+			if(nr_token==0||(tokens[nr_token-1].type!=TK_NUM&&tokens[nr_token-1].type!=TK_R&&tokens[nr_token-1].type!=TK_RPAR)){
+				tokens[nr_token].type=TK_NEG_NUM;
+                        	tokens[nr_token].str[0]=*(substr_start);
+				nr_token++;
+			}else{
+				tokens[nr_token].type=rules[i].token_type;
+                        	tokens[nr_token].str[0]=*(substr_start);
+                       		nr_token++;
+			}
                         break;
 		case '*':
 			if(nr_token==0||(tokens[nr_token-1].type!=TK_NUM&&tokens[nr_token-1].type!=TK_R&&tokens[nr_token-1].type!=TK_RPAR)){
@@ -507,7 +513,7 @@ if (p > q) {
 			else if(tokens[i].type==TK_NUM||tokens[i].type==TK_R){
 				continue;
 		    	}
-			else if(tokens[i].type==TK_PTR){	
+			else if(tokens[i].type==TK_PTR||tokens[i].type==TK_NEG_NUM){	
 				int k=i+1;
 				assert(k<=q);
 				if(tokens[k].type==TK_LPAR){
@@ -536,18 +542,24 @@ if (p > q) {
 					assert(0);
 					Log("err");
 				}
-				
-				long int addr=eval(i+1,k);
-				Log("addr is%lx",addr);
-				val1= vaddr_read1(addr);
-				i=k;
-				Log("ptr_end_%d",i);
+				if(tokens[i].type==TK_PTR){
+					long int addr=eval(i+1,k);
+					Log("addr is%lx",addr);
+					val1= vaddr_read1(addr);
+					i=k;
+					Log("ptr_end_%d",i);
+				}else{
+					val1=-eval(i+1,k);
+					Log("neg_val%ld",val1);
+					i=k;
+					Log("neg_end%d",i);
+				}
 				//Log("q is%d",q);
 				if(i<q&&tokens[i+1].type!=TK_R&&tokens[i+1].type!=TK_NUM&&tokens[i+1].type!=TK_LPAR&&tokens[i+1].type!=TK_RPAR&&tokens[i+1].type!=TK_PTR) {
 					Log("detetc");
 					continue;
 				}else {
-					Log("return ptr");
+					Log("return ptr/neg");
 					return val1;	
 				}
 			
