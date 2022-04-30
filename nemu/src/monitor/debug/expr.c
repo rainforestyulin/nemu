@@ -460,9 +460,8 @@ int find_op_mul(int p,int q){
 	Log("find * / result %d",index);
 }
 
-
-unsigned long int eval(int p,int q){
-if (p > q) {
+long int eval(int p,int q){
+  if (p > q) {
     /* Bad expression */
 	assert(-1);
   }
