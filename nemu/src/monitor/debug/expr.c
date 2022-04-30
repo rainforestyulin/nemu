@@ -623,7 +623,7 @@ long int eval(int p,int q){
                                                         op=find_op_plus(i+1,q);
                                                         op_type=tokens[op].type;
                                                 }else if(find_op_mul(i+1,q)!=-1){
-                                        		op=find_op_plus(i+1,q);
+                                        		op=find_op_mul(i+1,q);
                                         		op_type=tokens[op].type;
                                 		};break;
 					case '/':
@@ -637,7 +637,7 @@ long int eval(int p,int q){
                                                         op=find_op_plus(i+1,q);
                                                         op_type=tokens[op].type;
                                                 }else if(find_op_mul(i+1,q)!=-1){
-                                                        op=find_op_plus(i+1,q);
+                                                        op=find_op_mul(i+1,q);
                                                         op_type=tokens[op].type;
                                                 };break;
 					}
