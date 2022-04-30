@@ -22,7 +22,6 @@ static struct rule {
   /* TODO: Add more rules.
    * Pay attention to the precedence level of different rules.
    */
- // {"[0-9][0-9]?",TK_NUM},
   {"0[xX][0-9a-fA-F]+|[0-9]+",TK_NUM},
   {"\\(",TK_LPAR},
   {"\\)",TK_RPAR},
@@ -55,7 +54,6 @@ void init_regex() {
   int i;
   char error_msg[128];
   int ret;
-
   for (i = 0; i < NR_REGEX; i ++) {
     ret = regcomp(&re[i], rules[i].regex, REG_EXTENDED);
     if (ret != 0) {
@@ -77,7 +75,6 @@ static bool make_token(char *e) {
   int position = 0;
   int i;
   regmatch_t pmatch;
-
   nr_token = 0;
   while (e[position] != '\0') {
     /* Try all rules one by one. */
@@ -173,18 +170,9 @@ static bool make_token(char *e) {
                         };
                         nr_token++;
                         break;
-
-	/*	case TK_NUM_X:
-			tokens[nr_token].type=rules[i].token_type;
-			for(int j=0;j<substr_len-2;j++){
-				tokens[nr_token].str[j]=*(substr_start+j+2);
-			}
-			nr_token++;
-			break;*/
                default: 
 			TODO();
 			break;
-        //Log("nr_buf_%d",nr_token);
 	}
         break;
       }
@@ -207,50 +195,40 @@ bool check_parentheses(int p,int  q){
 		int t_flag=q-1;
 		int par_num=0;
 		while(h_flag<=t_flag){
-			
 			if(tokens[h_flag].type==TK_LPAR){
 				par_num++;
 				h_flag++;
-				//Log("L");
 				continue;
 			}else if(tokens[h_flag].type==TK_RPAR){
-				//Log("R");
 				if(par_num>0){
 					par_num--;
 					h_flag++;
-					//Log("R+");
 				}else{
-					//Log("break");
 					res=false;
 					break;
 					
 				}
 			}else{
 				h_flag++;
-			//	Log("num");
 			}
-			//Log("ttttttt\n");
 		}
-	  ///legall
 	
 	}else{
 		res= false;
-		Log("false");
+		Log("not_parenthesed");
 	}
 		return res;
 }
 
 long int get_num_val(int p){
-	if(tokens[p].type==TK_NUM){/////
+	if(tokens[p].type==TK_NUM){
 		if(tokens[p].str[1]=='x'||tokens[p].str[1]=='X'){
 			int i=0;
         	        long int val=0;
                		while(tokens[p].str[i]!='\0'){
-				 //printf("-%c-",tokens[p].str[i]);
 				 i++;
                 	}
 			i=i-2;
-			//printf("i_%d",i);
                		for(int j=0;j<i;j++){
                         	int temp=1;
                         	for(int jj=i-j-1;jj>0;jj--){
@@ -259,34 +237,33 @@ long int get_num_val(int p){
                         	val=val+(tokens[p].str[j+2]-48)*temp;
 
                		}
-                	//printf("val_%ld",val);
                 	return val;
 		}else{
-		int i=0;
-		long int val=0;
-		while(tokens[p].str[i]!='\0'){
-		 i++;
-		}
-		for(int j=0;j<i;j++){
-			int temp=1;
-			for(int jj=i-j-1;jj>0;jj--){
-			temp=temp*10;
+			int i=0;
+			long int val=0;
+			while(tokens[p].str[i]!='\0'){
+		 		i++;
 			}
+			for(int j=0;j<i;j++){
+				int temp=1;
+				for(int jj=i-j-1;jj>0;jj--){
+					temp=temp*10;
+				}
 			val=val+(tokens[p].str[j]-48)*temp;
 
-		}
-		//printf("%ld\t %lx\n",val,val);
+			}
 		return val;
 		}		
-	}else if(tokens[p].type==TK_R){//////
+	}else if(tokens[p].type==TK_R){
 		long int val=0;
 		bool issuccess=false;
 		val=isa_reg_str2val(tokens[p].str,&issuccess);
 		if(issuccess==true){
-		//printf("%ld\t %lx\n",val,val);
-		return val;}
+			return val;
+		}
 	}else{
-		printf("invalid_expr\n");
+		printf("invalid_value_expr\n");
+		assert(-1);
 	}
 	return 0;
 }
