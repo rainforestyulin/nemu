@@ -657,7 +657,7 @@ if (p > q) {
                                                         op_type=tokens[op].type;
                                                 };break;
 					}
-				Log("detemted op%d",op);
+				Log("switch detemted op%d",op);
 			//	int l_op_index=-1;
 			//	if(tokens[i].type=='*'||tokens[i].type=='/')
 				/*int j=i+1;
@@ -713,7 +713,7 @@ if (p > q) {
 			}
 			
      	}
-      Log("detemied op_____%c",tokens[op].type);		
+      Log("detemied op%d_____%c",op,tokens[op].type);		
     /* We should do more things here. */
     //op = the position of 主运算符 in the token expression;
     // long int val1=0,val2=0;
