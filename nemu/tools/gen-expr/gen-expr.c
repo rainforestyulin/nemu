@@ -60,7 +60,7 @@ int choose(int val){
 void gen_num(){
         int temp=0;
         srand((int)(time(0) + rand()));
-        temp=rand()%100;
+        temp=rand()%1000;
 	//printf("%d\n",temp);
 	//printf("temp_is_%d \n",temp);
         val_deal_tool(temp,buf,&buf_nr);

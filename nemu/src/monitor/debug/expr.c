@@ -642,45 +642,45 @@ long int eval(int p,int q){
                                                 };break;
 					}
 			}
-		    Log("detemied op%d_____%c",op,tokens[op].type);
- 		    assert(op!=-1);
-		    switch (op_type) {
-      		    	case '+': return eval(p,op-1)+eval(op+1,q);break;    
-      			case '-': return eval(p,op-1)-eval(op+1,q);break;
-      			case '*': return eval(p,op-1)*eval(op+1,q);break;
-      			case '/': if(eval(op+1,q)!=0){
-                        	return eval(p,op-1)/eval(op+1,q);break;
-                	}else{
-                        	panic("Wdiv 0 err!");
-                        	assert(0);
-                	}
-      			case TK_EQ: if(eval(p,op-1) == eval(op+1,q)) {
-                        	return 1;
-                  	}else{
-                        	return 0;
-                  	}
-                  	break;
-      			case TK_N_EQ: if(eval(p,op-1) != eval(op+1,q)) {
-                        	return 1;
-                  	}else{
-                        	return 0;
-                  	}
-                  	break;
-      			case TK_AND: if(eval(p,op-1) * eval(op+1,q) != 0) {
-                        	return 1;
-                   	}else{
-                        	return 0;
-                   	}
-                  	break;
-      			default: Log("invalid_expr");
+			    Log("detemied op%d_____%c",op,tokens[op].type);
+ 			    assert(op!=-1);
+			    switch (op_type) {
+      		    		case '+': return eval(p,op-1)+eval(op+1,q);break;    
+      				case '-': return eval(p,op-1)-eval(op+1,q);break;
+      				case '*': return eval(p,op-1)*eval(op+1,q);break;
+      				case '/': if(eval(op+1,q)!=0){
+                        		return eval(p,op-1)/eval(op+1,q);break;
+                		}else{
+                        		panic("Wdiv 0 err!");
+                        		assert(0);
+                		}
+      				case TK_EQ: if(eval(p,op-1) == eval(op+1,q)) {
+                        		return 1;
+                  		}else{
+                        		return 0;
+                  		}
+                  		break;
+      				case TK_N_EQ: if(eval(p,op-1) != eval(op+1,q)) {
+                        		return 1;
+                  		}else{
+                        		return 0;
+                  		}
+                  		break;
+      				case TK_AND: if(eval(p,op-1) * eval(op+1,q) != 0) {
+                        		return 1;
+                   		}else{
+                        		return 0;
+                   		}
+                  		break;
+      				default: Log("invalid_expr");
                 	assert(0); break;
-    	       	}		
+    	       		}		
      	}
   }
   return 0;
 }
 
-word_t expr(char *e, bool *success) {
+long int expr(char *e, bool *success) {
   if (!make_token(e)) {
     *success = false;
     return 0;
