@@ -711,55 +711,64 @@ if (p > q) {
 					break;
 				}*/
 			}
-			
-     	}
-      Log("detemied op%d_____%c",op,tokens[op].type);		
+		    Log("detemied op%d_____%c",op,tokens[op].type);
     /* We should do more things here. */
     //op = the position of 主运算符 in the token expression;
     // long int val1=0,val2=0;
        assert(op!=-1);
 
-           
-//   	     val1 = eval(p, op - 1);
-      
-    switch (op_type) {
+
+		    switch (op_type) {
       case '+': return eval(p,op-1)+eval(op+1,q);break;
-	      /*val=val1+val2;
-	      return val ; break;*/
+              /*val=val1+val2;
+              return val ; break;*/
       case '-': return eval(p,op-1)-eval(op+1,q);break;
-		/*val=val1-val2;
-		return val ; break;*/
+                /*val=val1-val2;
+                return val ; break;*/
       case '*': return eval(p,op-1)*eval(op+1,q);break;
-		/*val=val1*val2;
-		return val; break;*/
+                /*val=val1*val2;
+                return val; break;*/
       case '/': if(eval(op+1,q)!=0){
-			//val=val1/val2;
-			return eval(p,op-1)/eval(op+1,q);break;
-		}else{
-			panic("Wdiv 0 err!");
-			assert(0);
-		}
+                        //val=val1/val2;
+                        return eval(p,op-1)/eval(op+1,q);break;
+                }else{
+                        panic("Wdiv 0 err!");
+                        assert(0);
+                }
       case TK_EQ: if(eval(p,op-1) == eval(op+1,q)) {
-		  	return 1;
-		  }else{
-		  	return 0;
-		  }
-		  break;
-      case TK_N_EQ: if(eval(p,op-1) != eval(op+1,q)) {
-                 	 return 1;
+                        return 1;
                   }else{
-                  	return 0;
+                        return 0;
+                  }
+                  break;
+      case TK_N_EQ: if(eval(p,op-1) != eval(op+1,q)) {
+                         return 1;
+                  }else{
+                        return 0;
                   }
                   break;
       case TK_AND: if(eval(p,op-1) * eval(op+1,q) != 0) {
-		   	return 1;
-		   }else{
-		   	return 0;
-		   }
+                        return 1;
+                   }else{
+                        return 0;
+                   }
                   break;
       default: Log("invalid_expr");
-		assert(0); break;
+                assert(0); break;
     }
+
+			
+     	}
+  //    Log("detemied op%d_____%c",op,tokens[op].type);		
+    /* We should do more things here. */
+    //op = the position of 主运算符 in the token expression;
+    // long int val1=0,val2=0;
+//       assert(op!=-1);
+
+           
+//   	     val1 = eval(p, op - 1);
+      
+
   }
   return 0;
 }
