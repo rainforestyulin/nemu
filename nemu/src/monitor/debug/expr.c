@@ -246,7 +246,15 @@ long int get_num_val(int p){
                         	for(int jj=i-j-1;jj>0;jj--){
                         		temp=temp*16;
                         	}
-                        	val=val+(tokens[p].str[j+2]-48)*temp;
+				if(tokens[p].str[j+2]>=48&&tokens[p].str[j+2]<=57){
+                        		val=val+(tokens[p].str[j+2]-48)*temp;
+				}else if(tokens[p].str[j+2]>=65&&tokens[p].str[j+2]<=70){
+					val=val+(tokens[p].str[j+2]-55)*temp;
+				}else if(tokens[p].str[j+2]>=97&&tokens[p].str[j+2]<=102){
+					val=val+(tokens[p].str[j+2]-87)*temp;
+				}else{
+					assert(-1);
+				}
 
                		}
                 	return val;
