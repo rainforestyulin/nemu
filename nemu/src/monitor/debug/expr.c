@@ -240,6 +240,7 @@ long int get_num_val(int p){
 				 i++;
                 	}
 			i=i-2;
+			printf("deep of 0x%d",i);
                		for(int j=0;j<i;j++){
                         	int temp=1;
                         	for(int jj=i-j-1;jj>0;jj--){
