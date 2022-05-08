@@ -231,6 +231,7 @@ long int get_num_val(int p){
 		int i=0;
 		while(tokens[p].str[i]!=-'\0'){
 			printf("%c",tokens[p].str[i]);
+			i++;
 		}
 		if(tokens[p].str[1]=='x'||tokens[p].str[1]=='X'){
 			int i=0;
