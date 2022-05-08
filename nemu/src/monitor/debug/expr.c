@@ -228,11 +228,6 @@ bool check_parentheses(int p,int  q){
 
 long int get_num_val(int p){
 	if(tokens[p].type==TK_NUM){
-		int i=0;
-		while(tokens[p].str[i]!=-'\0'){
-			printf("%c",tokens[p].str[i]);
-			i++;
-		}
 		if(tokens[p].str[1]=='x'||tokens[p].str[1]=='X'){
 			int i=0;
         	        long int val=0;
@@ -240,7 +235,6 @@ long int get_num_val(int p){
 				 i++;
                 	}
 			i=i-2;
-			printf("\ndeep of 0x%d\n",i);
                		for(int j=0;j<i;j++){
                         	int temp=1;
                         	for(int jj=i-j-1;jj>0;jj--){
