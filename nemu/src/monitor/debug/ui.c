@@ -10,6 +10,7 @@ void cpu_exec(uint64_t);
 int is_batch_mode();
 word_t vaddr_read1(vaddr_t addr);
 word_t expr(char *e, bool *success);
+WP* new_wp(char *expr);
 /* We use the `readline' library to provide more flexibility to read from stdin. */
 static char* rl_gets() {
   static char *line_read = NULL;
@@ -72,10 +73,15 @@ static int cmd_m_p(char *args){
   r[0]=strtol(args,NULL,10);
   r[1]=strtol(args+2,NULL,16);
   for (int i=0;i<r[0];i++){
-  	printf("0x%x\t0x%lx\t\n",r[1]+i,vaddr_read1(r[1]+i));
+  	printf("0x%x\t0x%x\t\n",r[1]+i,vaddr_read1(r[1]+i));
   }
  // printf("%s____%d____%x",args,r[0],r[1]);
   return 0;
+}
+
+static int cmd_w(char *args){
+	new_wp(args);
+	return 0;
 }
 
 static int cmd_e_p(char *args){
@@ -97,6 +103,7 @@ static struct {
   {"info","\"info r\" for display regs state,\"info w\" for display watch_points", cmd_info },
   {"x","\"x N expr\" for print N memo from addr expr",cmd_m_p},
   {"p","\"x EXPR \" for caculate the result of the EXPR",cmd_e_p},
+  {"w","\"w EXPR\" for set watchpoint according EXPR",cmd_w},
   /* TODO: Add more commands */
 
 };
