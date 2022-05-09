@@ -11,6 +11,7 @@ int is_batch_mode();
 word_t vaddr_read1(vaddr_t addr);
 word_t expr(char *e, bool *success);
 WP* new_wp(char *expr);
+void print_wp();
 /* We use the `readline' library to provide more flexibility to read from stdin. */
 static char* rl_gets() {
   static char *line_read = NULL;
@@ -56,10 +57,13 @@ static int cmd_s(char *args){
 static int cmd_info(char *args){
   const char *temp=args;
   if(temp!=NULL){
-    if(strcmp(temp,"r")==0||strcmp(temp,"w")==0){
+    if(strcmp(temp,"r")==0){
      // printf("%s\n",temp);
       isa_reg_display();
       return 0;
+    }else if(strcmp(temp,"w")==0){
+    	print_wp();
+	return 0;
     }else{
       printf("invalid argument");
       return -1;

@@ -21,6 +21,13 @@ void init_wp_pool() {
 /* TODO: Implement the functionality of watchpoint */
 WP* new_wp(char *expr);
 void free_wp(WP *wp);
+void print_wp(){
+	WP* temp=head;
+	while(temp!=NULL){
+		printf("wp_%d_expr_%s\n",temp->NO,temp->expr);
+		temp=temp->next;
+	}
+}
 WP* new_wp(char *expr){
 
 	/*if(*head==NULL){
