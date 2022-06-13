@@ -60,6 +60,7 @@ WP* new_wp(char *expr){
 			i++;
 		}
 		temp->expr[i]='\0';
+		temp->next=NULL;
 		free_=free_->next;
 		return temp;
 
